@@ -1,28 +1,14 @@
 page-item-detail {
   .item-profile {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
+    width: 100%;
+    background-position: center center;
     background-size: cover;
-    margin-left: auto;
-    margin-right: auto;
-
+    height: 250px;
   }
 
   .item-detail {
     width: 100%;
     background: white;
+    position: absolute;
   }
-  button{
-    float: right;
-  }
-
-
-  ion-card-header {
-    font-weight: bold;
-  }
-  .col{
-    background: white;
-  }
-
 }

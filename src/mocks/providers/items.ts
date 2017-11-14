@@ -9,63 +9,47 @@ export class Items {
   defaultItem: any = {
     "name": "Burt Bear",
     "profilePic": "assets/img/speakers/bear.jpg",
-    "groupNumber": "Group 1",
+    "about": "Burt is a Bear.",
   };
 
 
   constructor() {
     let items = [
       {
-        "name": "Johnny Smith",
-        "profilePic": "assets/img/speakers/boy1.jpg",
-        "groupNumber": "Group 4"
+        "name": "Burt Bear",
+        "profilePic": "assets/img/speakers/bear.jpg",
+        "about": "Burt is a Bear."
       },
       {
-        "name": "Susie Baker",
-        "profilePic": "assets/img/speakers/girl1.jpg",
-        "groupNumber": "Group 3"
+        "name": "Charlie Cheetah",
+        "profilePic": "assets/img/speakers/cheetah.jpg",
+        "about": "Charlie is a Cheetah."
       },
       {
-        "name": "Devin Atmoore",
-        "profilePic": "assets/img/speakers/boy2.jpg",
-        "groupNumber": "Group 1"
+        "name": "Donald Duck",
+        "profilePic": "assets/img/speakers/duck.jpg",
+        "about": "Donald is a Duck."
       },
       {
-        "name": "Eva Townsend",
-        "profilePic": "assets/img/speakers/girl2.jpg",
-        "groupNumber": "Group 5"
+        "name": "Eva Eagle",
+        "profilePic": "assets/img/speakers/eagle.jpg",
+        "about": "Eva is an Eagle."
       },
       {
-        "name": "Theo Menefee",
-        "profilePic": "assets/img/speakers/boy3.jpg",
-        "groupNumber": "Group 2"
+        "name": "Ellie Elephant",
+        "profilePic": "assets/img/speakers/elephant.jpg",
+        "about": "Ellie is an Elephant."
       },
       {
-        "name": "Ellie Phillips",
-        "profilePic": "assets/img/speakers/girl3.jpg",
-        "groupNumber": "Group 3"
+        "name": "Molly Mouse",
+        "profilePic": "assets/img/speakers/mouse.jpg",
+        "about": "Molly is a Mouse."
       },
       {
-        "name": "Eric Hatmaker",
-        "profilePic": "assets/img/speakers/boy4.jpg",
-        "groupNumber": "Group 2"
-      },
-      {
-        "name": "Mary Altmire",
-        "profilePic": "assets/img/speakers/girl4.jpg",
-        "groupNumber": "Group 1"
-      },
-      {
-        "name": "Grant Copeland",
-        "profilePic": "assets/img/speakers/boy5.jpg",
-        "groupNumber": "Group 5"
-      },
-      {
-        "name": "Sandy Jackson",
-        "profilePic": "assets/img/speakers/girl5.jpg",
-        "groupNumber": "Group 3"
-      },
-
+        "name": "Paul Puppy",
+        "profilePic": "assets/img/speakers/puppy.jpg",
+        "about": "Paul is a Puppy."
+      }
     ];
 
     for (let item of items) {
