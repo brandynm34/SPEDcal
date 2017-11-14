@@ -18,52 +18,52 @@ export class Items {
       {
         "name": "Johnny Smith",
         "profilePic": "assets/img/speakers/boy1.jpg",
-        "groupNumber": "Group 4"
+        "groupNumber": "4"
       },
       {
         "name": "Susie Baker",
         "profilePic": "assets/img/speakers/girl1.jpg",
-        "groupNumber": "Group 3"
+        "groupNumber": "3"
       },
       {
         "name": "Devin Atmoore",
         "profilePic": "assets/img/speakers/boy2.jpg",
-        "groupNumber": "Group 1"
+        "groupNumber": "1"
       },
       {
         "name": "Eva Townsend",
         "profilePic": "assets/img/speakers/girl2.jpg",
-        "groupNumber": "Group 5"
+        "groupNumber": "5"
       },
       {
         "name": "Theo Menefee",
         "profilePic": "assets/img/speakers/boy3.jpg",
-        "groupNumber": "Group 2"
+        "groupNumber": "2"
       },
       {
         "name": "Ellie Phillips",
         "profilePic": "assets/img/speakers/girl3.jpg",
-        "groupNumber": "Group 3"
+        "groupNumber": "3"
       },
       {
         "name": "Eric Hatmaker",
         "profilePic": "assets/img/speakers/boy4.jpg",
-        "groupNumber": "Group 2"
+        "groupNumber": "2"
       },
       {
         "name": "Mary Altmire",
         "profilePic": "assets/img/speakers/girl4.jpg",
-        "groupNumber": "Group 1"
+        "groupNumber": "1"
       },
       {
         "name": "Grant Copeland",
         "profilePic": "assets/img/speakers/boy5.jpg",
-        "groupNumber": "Group 5"
+        "groupNumber": "5"
       },
       {
         "name": "Sandy Jackson",
         "profilePic": "assets/img/speakers/girl5.jpg",
-        "groupNumber": "Group 3"
+        "groupNumber": "3"
       },
 
     ];
