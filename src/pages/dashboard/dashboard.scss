@@ -1,0 +1,51 @@
+.splash-bg {
+  position: absolute;
+  background: url('../assets/img/Backgroundimg-01.svg') no-repeat transparent;
+  background-size: cover;
+  height: 100%;
+  width: 100vw;
+  z-index: 1;
+  background-repeat: repeat-x;
+}
+
+
+  .splash-info {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+  .splash-logo {
+    margin: 10px auto;
+    background: url('../assets/img/DoneLogo.png') no-repeat transparent;
+    background-size: 100%;
+    width: 328px;
+    height: 128px;
+  }
+
+
+  .round-button {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+  .round-button-circle {
+    width: 60%;
+    height:0;
+    padding: 30% 0;
+      border-radius: 50%;      
+      background-color: #8CC63F; 
+      box-shadow: 3 3 5px #000;
+      font-size: 30px;
+  }
+  .round-button-circle:hover {
+    background-color: #fff !important;
+    color: #F7931E;
+  }
+
+  @media only screen and (max-width: 576px) {
+    .round-button-circle {
+      font-size: 20px;
+      width: 80%;
+      padding: 40% 0;
+    }      
+  }
