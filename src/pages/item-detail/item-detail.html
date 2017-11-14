@@ -8,34 +8,11 @@
 
 
 <ion-content>
+  <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">
+  </div>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col col-12 col-md-4 >
-        <div class="item-profile"  text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">
-        </div>
-      </ion-col>
-      <ion-col  col-12 col-md-8>
-        <div class="item-detail" padding>
-          <button ion-button>Edit</button>
-          <h2>{{ item.name }}</h2>
-          <!-- <p>{{ item.about }}</p> -->
-          <p>Group Number: {{item.groupNumber}} </p>
-          <p>Notes: </p>
-        </div>
-      </ion-col>
-    </ion-row>
-
-  </ion-grid>
-
-  <ion-card>
-    <ion-card-header>
-        Weekly Progress
-    </ion-card-header>
-    <ion-card-content>
-      <canvas  #barCanvas ></canvas>
-    </ion-card-content>
-  </ion-card>
-
-
+  <div class="item-detail" padding>
+    <h2>{{item.name}}</h2>
+    <p>{{item.about}}</p>
+  </div>
 </ion-content>
