@@ -4,7 +4,6 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { Chart } from 'chart.js';
 
 import { Items } from '../../providers/providers';
-import { TasksPage } from '../tasks/tasks';
 
 @IonicPage()
 @Component({
