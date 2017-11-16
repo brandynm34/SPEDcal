@@ -1,2 +1,16 @@
-page-login {
+.background {
+    position: absolute;
+    background: url('../assets/img/Backgroundimg-01.svg') no-repeat transparent;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+    background-repeat: repeat-x;
 }
+
+
+.login { 
+    width: 100%;
+    font-weight: 900;
+}
+
