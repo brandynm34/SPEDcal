@@ -1,8 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+
 import { Chart } from 'chart.js';
 
 import { Items } from '../../providers/providers';
+import { TasksPage } from '../tasks/tasks';
 
 @IonicPage()
 @Component({
@@ -16,9 +18,19 @@ export class ItemDetailPage {
 
   item: any;
 
-  constructor(public navCtrl: NavController, navParams: NavParams, items: Items) {
+  constructor(
+    public navCtrl: NavController,
+    navParams: NavParams, 
+    public modalCtrl: ModalController,
+    items: Items) {
     this.item = navParams.get('item') || items.defaultItem;
   }
+
+  openItem() {
+        let modal = this.modalCtrl.create(TasksPage);
+        console.log("working");
+        modal.present();
+      }
 
   ionViewDidLoad() {
     this.barChart = new Chart(this.barCanvas.nativeElement, {
@@ -67,4 +79,6 @@ export class ItemDetailPage {
 
     });
   }
+
+
 }
