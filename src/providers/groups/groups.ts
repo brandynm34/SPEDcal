@@ -1,0 +1,21 @@
+import { Injectable } from '@angular/core';
+
+import { Group } from '../../models/group';
+import { Api } from '../api/api';
+
+@Injectable()
+export class Groups {
+
+  constructor(public api: Api) { }
+
+  query(params?: any) {
+    return this.api.get('/groups', params);
+  }
+
+  add(group: Group) {
+  }
+
+  delete(group: Group) {
+  }
+
+}

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Group } from '../../models/group';
+import { Groups } from '../../providers/providers';
 
 
 
@@ -9,14 +11,30 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'grouplist.html',
 })
 export class GrouplistPage {
+  currentGroups: Group[];
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-
+  constructor(public navCtrl: NavController, public groups: Groups, public navParams: NavParams) {
+      this.currentGroups = this.groups.query();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad GrouplistPage');
   }
+
+  /**
+   * Delete an item from the list of items.
+   */
+  deleteItem(group) {
+    this.groups.delete(group);
+  }
+
+  /**
+   * Navigate to the detail page for this item.
+   */
+  openItem(group: Group) {
+    this.navCtrl.push('ListMasterPage', {
+      group: group
+    });
+  }
+
 
 }

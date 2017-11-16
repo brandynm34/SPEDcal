@@ -10,11 +10,17 @@
 <ion-content>
 
   <ion-list>
-    <ion-item-sliding *ngFor="let item of currentItems">
-      <button ion-item (click)="openItem(item)">
-        <h1>Group {{item.groupNumber}}</h1>
+    <ion-item-sliding *ngFor="let group of currentGroups">
+      <button ion-item (click)="openItem(group)">
+        <h1>{{group.name}} {{group.id}}</h1>
+
       </button>
-      <p>this is group list</p>
+      <!-- <ion-item-options>
+        <button ion-button color="danger" (click)="deleteItem(item)">
+          {{ 'DELETE_BUTTON' | translate }}
+        </button>
+      </ion-item-options> -->
     </ion-item-sliding>
   </ion-list>
+
 </ion-content>
