@@ -2,7 +2,7 @@
   position: absolute;
   background: url('../assets/img/Backgroundimg-01.svg') no-repeat transparent;
   background-size: cover;
-  height: 100%;
+  height: 130%;
   width: 100vw;
   z-index: 1;
   background-repeat: repeat-x;
@@ -33,13 +33,12 @@
     height:0;
     padding: 30% 0;
       border-radius: 50%;      
-      background-color: #8CC63F; 
+      background-color: #FBD43B; 
       box-shadow: 3 3 5px #000;
       font-size: 30px;
   }
   .round-button-circle:hover {
-    background-color: #fff !important;
-    color: #F7931E;
+    background-color: #F7931E !important;
   }
 
   @media only screen and (max-width: 576px) {
