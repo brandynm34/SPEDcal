@@ -27,7 +27,7 @@ export class ItemDetailPage {
   }
 
   openItem() {
-        let modal = this.modalCtrl.create(TasksPage);
+        let modal = this.modalCtrl.create('TasksPage');
         console.log("working");
         modal.present();
       }
