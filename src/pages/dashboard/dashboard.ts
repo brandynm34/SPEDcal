@@ -14,13 +14,16 @@ export class Dashboard {
   constructor(
     public navCtrl: NavController,
   ){
-    
+
       }
-  
+
   openStudents() {
     this.navCtrl.push('ListMasterPage');
   }
 
-  
+  openGroups() {
+    this.navCtrl.push('GrouplistPage');
+  }
+
 
 }

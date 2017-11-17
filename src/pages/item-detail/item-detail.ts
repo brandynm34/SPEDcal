@@ -1,5 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
+<<<<<<< HEAD
 import { IonicPage, NavController, NavParams, ViewController  } from 'ionic-angular';
+=======
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+
+>>>>>>> 2800fb3cbcbd9cb7e8d3b6842495f0e6190b26c0
 import { Chart } from 'chart.js';
 import { ItemDetailEditPage } from '../item-detail-edit/item-detail-edit';
 import { Items } from '../../providers/providers';
@@ -19,9 +24,20 @@ export class ItemDetailPage {
   item: any;
   form: FormGroup;
 
-  constructor(public navCtrl: NavController, navParams: NavParams,public viewCtrl: ViewController, items: Items) {
+  constructor(
+    public navCtrl: NavController,
+    navParams: NavParams,
+    public modalCtrl: ModalController,
+    public viewCtrl: ViewController,
+    items: Items) {
     this.item = navParams.get('item') || items.defaultItem;
   }
+
+  openItem() {
+        let modal = this.modalCtrl.create('TasksPage');
+        console.log("working");
+        modal.present();
+      }
 
   ionViewDidLoad() {
     this.barChart = new Chart(this.barCanvas.nativeElement, {
