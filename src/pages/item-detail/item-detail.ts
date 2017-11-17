@@ -1,8 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController  } from 'ionic-angular';
 import { Chart } from 'chart.js';
-
+import { ItemDetailEditPage } from '../item-detail-edit/item-detail-edit';
 import { Items } from '../../providers/providers';
+import { Item } from '../../models/item';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @IonicPage()
 @Component({
@@ -15,8 +17,9 @@ export class ItemDetailPage {
   barChart: any;
 
   item: any;
+  form: FormGroup;
 
-  constructor(public navCtrl: NavController, navParams: NavParams, items: Items) {
+  constructor(public navCtrl: NavController, navParams: NavParams,public viewCtrl: ViewController, items: Items) {
     this.item = navParams.get('item') || items.defaultItem;
   }
 
@@ -42,7 +45,7 @@ export class ItemDetailPage {
             'rgba(75, 192, 192, 1)',
             'rgba(153, 102, 255, 1)'
           ],
-          borderWidth: 1 
+          borderWidth: 1
         }]
       },
       options: {
@@ -67,4 +70,26 @@ export class ItemDetailPage {
 
     });
   }
+
+  // openEditPage(item: Item) {
+  //   this.navCtrl.push('ItemDetailEditPage', {
+  //     item: item
+  //   });
+  // }
+
+  openEditPage(button){
+    var x = document.getElementById("it");
+    if (x.contentEditable == "true") {
+        x.contentEditable = "false";
+        document.getElementById("btn").innerHTML="Edit"
+
+    } else {
+        x.contentEditable = "true";
+        document.getElementById("btn").innerHTML="Save";
+
+    }
+  }
+
+
+
 }
