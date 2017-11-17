@@ -23,8 +23,4 @@ export class TasksPage {
     this.viewCtrl.dismiss();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TasksPage');
-  }
-
 }
