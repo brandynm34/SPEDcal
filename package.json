@@ -27,6 +27,7 @@
     "@ionic/storage": "2.0.1",
     "@ngx-translate/core": "8.0.0",
     "@ngx-translate/http-loader": "^2.0.0",
+    "angular2-click-to-edit": "^1.0.52",
     "chart.js": "^2.7.1",
     "ionic-angular": "3.8.0",
     "ionicons": "3.0.0",

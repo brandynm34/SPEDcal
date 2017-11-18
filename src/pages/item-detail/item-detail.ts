@@ -1,10 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-<<<<<<< HEAD
-import { IonicPage, NavController, NavParams, ViewController  } from 'ionic-angular';
-=======
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
-
->>>>>>> 2800fb3cbcbd9cb7e8d3b6842495f0e6190b26c0
+import { IonicPage, NavController, NavParams, ViewController,ModalController } from 'ionic-angular';
 import { Chart } from 'chart.js';
 import { ItemDetailEditPage } from '../item-detail-edit/item-detail-edit';
 import { Items } from '../../providers/providers';
@@ -87,23 +82,10 @@ export class ItemDetailPage {
     });
   }
 
-  // openEditPage(item: Item) {
-  //   this.navCtrl.push('ItemDetailEditPage', {
-  //     item: item
-  //   });
-  // }
-
-  openEditPage(button){
-    var x = document.getElementById("it");
-    if (x.contentEditable == "true") {
-        x.contentEditable = "false";
-        document.getElementById("btn").innerHTML="Edit"
-
-    } else {
-        x.contentEditable = "true";
-        document.getElementById("btn").innerHTML="Save";
-
-    }
+  openEditPage(item: Item) {
+    this.navCtrl.push('ItemDetailEditPage', {
+      item: item
+    });
   }
 
 
