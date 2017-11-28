@@ -1,5 +1,8 @@
 <ion-header>
 
+
+
+
   <ion-navbar color="third">
     <ion-title>{{ item.name }}</ion-title>
   </ion-navbar>
@@ -17,13 +20,13 @@
       </ion-col>
       <ion-col  col-12 col-md-8>
         <div class="item-detail" padding>
-          <button ion-button>Edit</button>
+          <button ion-button (click)="openEditPage(item)" id="btn">Edit</button>
           <h2>{{ item.name }}</h2>
-          <!-- <p>{{ item.about }}</p> -->
           <p>Group Number: {{item.groupNumber}} </p>
           <p>Notes: </p>
         </div>
       </ion-col>
+
     </ion-row>
 
   </ion-grid>
@@ -37,40 +40,40 @@
     </ion-card-content>
   </ion-card>
 
-<!-- CALENDAR STARTS -->
-<h1 class="caltitle"> {{item.name}}'s Schedule </h1>
-<ion-row class="calendar" padding>
-  <div padding class="weekdays monday">
-    <h2>Monday</h2>
-    <button ion-button icon-only block round (click)="openItem()">
-      <ion-icon name="add"></ion-icon>
-    </button>
-  </div>
-  <div padding class="weekdays tuesday">
-    <h2>Tuesday</h2>      
-    <button ion-button icon-only block round (click)="openItem()">
-      <ion-icon name="add"></ion-icon>
-    </button>
-  </div>
-  <div padding class="weekdays wednesday">
-    <h3>Wednesday</h3>      
-    <button ion-button icon-only block round (click)="openItem()">
-      <ion-icon name="add"></ion-icon>
-    </button>
-  </div>
-  <div padding class="weekdays thursday">
-    <h2>Thursday</h2>
-    <button ion-button icon-only block round (click)="openItem()">
-      <ion-icon name="add"></ion-icon>
-    </button>
-  </div>
-  <div padding class="weekdays friday">
-    <h2>Friday</h2>      
-    <button ion-button icon-only block round (click)="openItem()">
-      <ion-icon name="add"></ion-icon>
-    </button>
-  </div>
-</ion-row>
+  <!-- CALENDAR STARTS -->
+  <h1 class="caltitle"> {{item.name}}'s Schedule </h1>
+  <ion-row class="calendar" padding>
+    <div padding class="weekdays monday">
+      <h2>Monday</h2>
+      <button ion-button icon-only block round (click)="openItem()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </div>
+    <div padding class="weekdays tuesday">
+      <h2>Tuesday</h2>
+      <button ion-button icon-only block round (click)="openItem()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </div>
+    <div padding class="weekdays wednesday">
+      <h3>Wednesday</h3>
+      <button ion-button icon-only block round (click)="openItem()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </div>
+    <div padding class="weekdays thursday">
+      <h2>Thursday</h2>
+      <button ion-button icon-only block round (click)="openItem()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </div>
+    <div padding class="weekdays friday">
+      <h2>Friday</h2>
+      <button ion-button icon-only block round (click)="openItem()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </div>
+  </ion-row>
 
 
 
