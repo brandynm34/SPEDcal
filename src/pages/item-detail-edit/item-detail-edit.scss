@@ -1,12 +1,34 @@
 page-item-detail-edit {
-  .item-profile {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    background-size: cover;
-    margin-left: auto;
-    margin-right: auto;
-
+  .picture-wrapper{
+    .profile-image {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background-size: cover;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      opacity: .6; //fades image
+    }
+    .new-profile-image{
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background-size: cover;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
+    ion-icon {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 100%;
+      text-align: center;
+      font-size: 150px;
+      margin-top: -70px;
+      color: grey;
+    }
   }
 
   .item-detail {
@@ -17,10 +39,6 @@ page-item-detail-edit {
     float: right;
   }
 
-
-  ion-card-header {
-    font-weight: bold;
-  }
   .col{
     background: white;
   }

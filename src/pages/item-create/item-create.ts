@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera } from '@ionic-native/camera';
 import { IonicPage, NavController, ViewController } from 'ionic-angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @IonicPage()
 @Component({

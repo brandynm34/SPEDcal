@@ -1,10 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { Chart } from 'chart.js';
 import { Items } from '../../providers/providers';
 import { Item } from '../../models/item';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
+import { Camera } from '@ionic-native/camera';
 
 
 @IonicPage()
@@ -14,14 +15,20 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class ItemDetailEditPage {
   @ViewChild('barCanvas') barCanvas;
+  @ViewChild('fileInput') fileInput;
+
 
   barChart: any;
   item: any;
 
   form: FormGroup;
+  isReadyToSave: boolean;
 
-  constructor(public navCtrl: NavController, navParams: NavParams, public formBuilder: FormBuilder, items: Items) {
+  constructor(public navCtrl: NavController, navParams: NavParams, public formBuilder: FormBuilder, public viewCtrl: ViewController, public camera: Camera, items: Items) {
     this.item = navParams.get('item') || items.defaultItem;
+    this.form = formBuilder.group({
+      profilePic: ['']
+    });
   }
 
 
@@ -76,6 +83,37 @@ export class ItemDetailEditPage {
     this.navCtrl.push('ItemDetailPage', {
       item: item
     });
+  }
+
+  getPicture() {
+    if (Camera['installed']()) {
+      this.camera.getPicture({
+        destinationType: this.camera.DestinationType.DATA_URL,
+        targetWidth: 96,
+        targetHeight: 96
+      }).then((data) => {
+        this.form.patchValue({ 'profilePic': 'data:image/jpg;base64,' + data });
+      }, (err) => {
+        alert('Unable to take photo');
+      })
+    } else {
+      this.fileInput.nativeElement.click();
+    }
+  }
+
+  processWebImage(event) {
+    let reader = new FileReader();
+    reader.onload = (readerEvent) => {
+
+      let imageData = (readerEvent.target as any).result;
+      this.form.patchValue({ 'profilePic': imageData });
+    };
+
+    reader.readAsDataURL(event.target.files[0]);
+  }
+
+  getProfileImageStyle() {
+    return 'url(' + this.form.controls['profilePic'].value + ')'
   }
 
 

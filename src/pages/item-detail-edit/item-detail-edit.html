@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar hideBackButton>
     <ion-title> {{ item.name }} </ion-title>
   </ion-navbar>
 
@@ -12,9 +12,23 @@
   <ion-grid>
     <ion-row>
       <ion-col col-12 col-md-4 >
-        <div class="item-profile"  text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">
-        </div>
+        <!-- <div class= "pic-and-icon"> -->
+        <form>
+          <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
+          <div class= "picture-wrapper" (click)="getPicture()">
+            <div *ngIf="!this.form.controls.profilePic.value">
+              <div class="profile-image" text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">
+              </div>
+              <ion-icon name="add"></ion-icon>
+            </div>
+            <div class="new-profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>
+          </div>
+        </form>
+
+        <!-- <ion-icon name="add"></ion-icon> -->
+        <!-- </div> -->
       </ion-col>
+
       <ion-col  col-12 col-md-8>
         <div class="item-detail" padding>
           <button ion-button (click)="closeEditPage(item)" id="btn">Save</button>
