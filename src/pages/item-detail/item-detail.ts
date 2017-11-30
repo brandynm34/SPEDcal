@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController,ModalController } from 'ionic-angular';
 import { Chart } from 'chart.js';
-import { ItemDetailEditPage } from '../item-detail-edit/item-detail-edit';
 import { Items } from '../../providers/providers';
 import { Item } from '../../models/item';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
