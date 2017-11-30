@@ -81,13 +81,4 @@ export class ItemDetailPage {
 
     });
   }
-
-  openEditPage(item: Item) {
-    this.navCtrl.push('ItemDetailEditPage', {
-      item: item
-    });
-  }
-
-
-
 }
