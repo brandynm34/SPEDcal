@@ -9,5 +9,8 @@ import { TodaysSchedulePage } from './todays-schedule';
   imports: [
     IonicPageModule.forChild(TodaysSchedulePage),
   ],
+  exports: [
+    TodaysSchedulePage
+  ]
 })
 export class TodaysSchedulePageModule {}
