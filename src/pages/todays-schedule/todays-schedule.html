@@ -13,7 +13,7 @@
 
 <ion-header>
   <ion-toolbar color=primary>
-    <ion-title>
+    <ion-title text-center class="title-day">
       MONDAY
     </ion-title>
     <ion-buttons start>
@@ -25,41 +25,40 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-item>
-    <ion-label>Breakfast</ion-label>
-    <ion-checkbox [(ngModel)]="Breakfast"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>Lunch</ion-label>
-    <ion-checkbox [(ngModel)]="Lunch"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>Snack</ion-label>
-    <ion-checkbox [(ngModel)]="Snack"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>Potty</ion-label>
-    <ion-checkbox [(ngModel)]="Potty"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>Gen Ed Class</ion-label>
-    <ion-checkbox [(ngModel)]="GenEdClass"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>Circle Time</ion-label>
-    <ion-checkbox [(ngModel)]="CircleTime"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>Screen Time</ion-label>
-    <ion-checkbox [(ngModel)]="ScreenTime"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>Recess</ion-label>
-    <ion-checkbox [(ngModel)]="recess"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>Reading</ion-label>
-    <ion-checkbox [(ngModel)]="reading"></ion-checkbox>
-  </ion-item>
-  <button ion-button block (click)="dismiss()">okay</button>
+  <ion-list>
+    <ion-item>
+      <ion-img item-left class="img-task-size" src="/assets/img/breakfast.png"></ion-img>
+      <ion-label class="label-task-font" >Breakfast</ion-label>
+      <ion-checkbox item-right [(ngModel)]="Breakfast"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-img item-left class="img-task-size" src="/assets/img/Circle time.png"></ion-img>
+      <ion-label class="label-task-font" >Circle Time</ion-label>
+      <ion-checkbox item-right [(ngModel)]="Circle-Time"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-img item-left class="img-task-size" src="/assets/img/Reading.png"></ion-img>
+      <ion-label class="label-task-font" >Reading</ion-label>
+      <ion-checkbox item-right [(ngModel)]="Reading"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-img item-left class="img-task-size" src="/assets/img/recess.png"></ion-img>
+      <ion-label class="label-task-font" >Recess</ion-label>
+      <ion-checkbox item-right [(ngModel)]="Recess"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-img item-left class="img-task-size" src="/assets/img/speech.png"></ion-img>
+      <ion-label class="label-task-font" >Speech</ion-label>
+      <ion-checkbox item-right [(ngModel)]="Speech"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-img item-left class="img-task-size" src="/assets/img/lunch.png"></ion-img>
+      <ion-label class="label-task-font" >Lunch</ion-label>
+      <ion-checkbox item-right [(ngModel)]="Lunch"></ion-checkbox>
+    </ion-item>
+
+
+
+  </ion-list>
+
 </ion-content>
