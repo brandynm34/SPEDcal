@@ -9,7 +9,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @IonicPage()
 @Component({
   selector: 'page-item-detail',
-  templateUrl: 'item-detail.html'
+  templateUrl: 'item-detail.html',
+  providers: [Items]
 })
 export class ItemDetailPage {
   @ViewChild('barCanvas') barCanvas;
@@ -24,8 +25,9 @@ export class ItemDetailPage {
     navParams: NavParams,
     public modalCtrl: ModalController,
     public viewCtrl: ViewController,
-    items: Items) {
-    this.item = navParams.get('item') || items.defaultItem;
+    students: Items) {
+      this.item = navParams.get('item') || students.defaultItem;
+      console.log('data', students.query());
   }
 
   openItem() {
