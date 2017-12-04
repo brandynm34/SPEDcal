@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ViewController,ModalController } f
 import { Chart } from 'chart.js';
 import { Items } from '../../providers/providers';
 import { Item } from '../../models/item';
+import { TodaysSchedulePage } from '../todays-schedule/todays-schedule';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @IonicPage()
@@ -32,6 +33,12 @@ export class ItemDetailPage {
         console.log("working");
         modal.present();
       }
+
+  openSchedule() {
+            let modal = this.modalCtrl.create('TodaysSchedulePage');
+            console.log("working");
+            modal.present();
+          }
 
   ionViewDidLoad() {
     this.barChart = new Chart(this.barCanvas.nativeElement, {
