@@ -14,7 +14,7 @@ export class ItemDetailPage {
   @ViewChild('barCanvas') barCanvas;
 
   barChart: any;
-
+  icons = [];
   item: any;
   form: FormGroup;
 
@@ -25,6 +25,10 @@ export class ItemDetailPage {
     public viewCtrl: ViewController,
     items: Items) {
     this.item = navParams.get('item') || items.defaultItem;
+
+    for (let x=0; x <10; x++){
+      this.icons.push(x)
+    }
   }
 
   openItem() {
@@ -80,4 +84,12 @@ export class ItemDetailPage {
 
     });
   }
+
+  reorderIcons(indexes) {
+    let element = this.icons[indexes.from];
+    this.icons.splice(indexes.from, 1);
+    this.icons.splice(indexes.to, 0, element);
+    console.log(indexes)
+  }
+
 }
