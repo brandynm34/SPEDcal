@@ -45,8 +45,8 @@
         <ion-icon name="add"></ion-icon>
       </button>
 
-      <ion-list reorder= "true" (ionItemReorder)="reorderIcons($event)">
-          <ion-item *ngFor="let icon of icons">{{ icon }}</ion-item>
+      <ion-list reorder= "true" (ionItemReorder)="reorderIconsMonday($event)">
+          <ion-item *ngFor="let iconMonday of iconsMonday">{{ iconMonday }}</ion-item>
       </ion-list>
 
     </div>
@@ -56,8 +56,8 @@
         <ion-icon name="add"></ion-icon>
       </button>
 
-      <ion-list reorder= "true" (ionItemReorder)="reorderIcons($event)">
-          <ion-item *ngFor="let icon of icons">{{ icon }}</ion-item>
+      <ion-list reorder= "true" (ionItemReorder)="reorderIconsTuesday($event)">
+          <ion-item *ngFor="let iconTuesday of iconsTuesday">{{ iconTuesday }}</ion-item>
       </ion-list>
 
     </div>
@@ -67,8 +67,8 @@
         <ion-icon name="add"></ion-icon>
       </button>
 
-      <ion-list reorder= "true" (ionItemReorder)="reorderIcons($event)">
-          <ion-item *ngFor="let icon of icons">{{ icon }}</ion-item>
+      <ion-list reorder= "true" (ionItemReorder)="reorderIconsWednesday($event)">
+          <ion-item *ngFor="let iconWednesday of iconsWednesday">{{ iconWednesday }}</ion-item>
       </ion-list>
 
     </div>
@@ -78,8 +78,8 @@
         <ion-icon name="add"></ion-icon>
       </button>
 
-      <ion-list reorder= "true" (ionItemReorder)="reorderIcons($event)">
-          <ion-item *ngFor="let icon of icons">{{ icon }}</ion-item>
+      <ion-list reorder= "true" (ionItemReorder)="reorderIconsThursday($event)">
+          <ion-item *ngFor="let iconThursday of iconsThursday">{{ iconThursday }}</ion-item>
       </ion-list>
 
     </div>
@@ -89,10 +89,10 @@
         <ion-icon name="add"></ion-icon>
       </button>
 
-      <ion-list reorder= "true" (ionItemReorder)="reorderIcons($event)">
-          <ion-item *ngFor="let icon of icons">{{ icon }}</ion-item>
+      <ion-list reorder= "true" (ionItemReorder)="reorderIconsFriday($event)">
+          <ion-item *ngFor="let iconFriday of iconsFriday">{{ iconFriday }}</ion-item>
       </ion-list>
-      
+
     </div>
   </ion-row>
 
