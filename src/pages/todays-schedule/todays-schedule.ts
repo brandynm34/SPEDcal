@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-
+import { Items } from '../../providers/providers';
 /**
  * Generated class for the TodaysSchedulePage page.
  *
@@ -12,10 +12,20 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 @Component({
   selector: 'page-todays-schedule',
   templateUrl: 'todays-schedule.html',
+  providers: [Items]
 })
 export class TodaysSchedulePage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+  student: any;
+  calendar: any;
+  today: string;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, students: Items) {
+    this.student = navParams.get('item');
+    console.log('student schedule', this.student);
+    let today = new Date();
+    if(today.getDay()>-1 && today.getDay()<5) {
+      this.calendar = this.student.calendar[today.getDay()-1].tasks;
+      this.today = this.student.calendar[today.getDay()-1].day;
+    }
   }
 
   dismiss() {

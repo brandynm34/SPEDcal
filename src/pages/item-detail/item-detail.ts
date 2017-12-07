@@ -31,7 +31,7 @@ export class ItemDetailPage {
     public viewCtrl: ViewController,
     students: Items) {
       this.item = navParams.get('item') || students.defaultItem;
-      console.log('data', students.query());
+      console.log('item', this.item);
 
       //generates number place hold on itemReorder
       for (let x=0; x <10; x++){
@@ -44,17 +44,19 @@ export class ItemDetailPage {
     }
   }
 
-  openItem() {
-        let modal = this.modalCtrl.create('TasksPage');
-        console.log("working");
-        modal.present();
-      }
+  openItem(item: Item) {
+    let modal = this.modalCtrl.create('TasksPage', {
+      item: this.item
+    });
+    modal.present();
+  }
 
-  openSchedule() {
-            let modal = this.modalCtrl.create('TodaysSchedulePage');
-            console.log("working");
-            modal.present();
-          }
+  openSchedule(item: Item) {
+    let modal = this.modalCtrl.create('TodaysSchedulePage', {
+      item: this.item
+    });
+    modal.present();
+  }
 
   ionViewDidLoad() {
     this.barChart = new Chart(this.barCanvas.nativeElement, {
