@@ -18,7 +18,7 @@ export class TodaysSchedulePage {
   student: any;
   calendar: any;
   today: string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, students: Items) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public students: Items) {
     this.student = navParams.get('item');
     console.log('student schedule', this.student);
     let today = new Date();
@@ -26,6 +26,14 @@ export class TodaysSchedulePage {
       this.calendar = this.student.calendar[today.getDay()-1].tasks;
       this.today = this.student.calendar[today.getDay()-1].day;
     }
+  }
+
+  updateCal(calendar) {
+
+  }
+
+  checklistCheck(calendar){
+    this.students.updateCal(calendar);
   }
 
   dismiss() {

@@ -29,7 +29,7 @@
     <ion-item *ngFor="let task of calendar">
       <ion-img item-left class="img-task-size" src='/assets/img/{{task.name}}.png'></ion-img>
       <ion-label class="label-task-font" >{{task.name}}</ion-label>
-      <ion-checkbox item-right [(ngModel)]="task.completed"></ion-checkbox>
+      <ion-checkbox item-right [(ngModel)]="task.completed" [checked]="task.completed" ng-click="updateCal()"></ion-checkbox>
     </ion-item>
   </ion-list>
 </ion-content>

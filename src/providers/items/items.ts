@@ -48,6 +48,15 @@ export class Items {
 
   }
 
+  updateCal(item: Item) {
+    this.api.post('students', item)
+    .subscribe(data => {
+      console.log(data);
+   }, error => {
+     console.log(error); 
+   });
+  }
+
   add(item: Item) {
     var headers = new Headers();
     headers.append("Accept", 'application/json');
