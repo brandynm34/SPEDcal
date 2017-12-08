@@ -30,7 +30,6 @@ export class TodaysSchedulePage {
       let weekend = ["Saturday","","","","","", "Sunday"];
       this.calendar = {};
       this.today = weekend[this.today.getDay()];
-      
     }
   }
 
