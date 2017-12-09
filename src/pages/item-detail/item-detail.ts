@@ -44,7 +44,7 @@ export class ItemDetailPage {
       all:0,
       com:0
     }
-  ]
+  ];
   nums = [];
 
   constructor(
@@ -81,15 +81,31 @@ export class ItemDetailPage {
       item: this.item
     });
     modal.present();
+    modal.onDidDismiss(() => {
+      this.getTaskStatus();
+      this.setPercents();
+      this.ionViewDidLoad()
+    });
   }
 
   getTaskStatus() {
+    this.resetTask();
     for(let i=0; i<5; i++){
       for(let j=0; j<this.item.calendar[i].tasks.length; j++){
         this.percents[i].all = this.item.calendar[i].tasks.length;
         if(this.item.calendar[i].tasks[j].completed){
           this.percents[i].com+=1;
-          console.log(this.percents[i].com);
+        }
+      }
+    }
+  }
+
+  resetTask() {
+    for(let i=0; i<5; i++){
+      for(let j=0; j<this.item.calendar[i].tasks.length; j++){
+        this.percents[i].all = this.item.calendar[i].tasks.length;
+        if(this.item.calendar[i].tasks[j].completed){
+          this.percents[i].com=0;
         }
       }
     }
@@ -97,6 +113,7 @@ export class ItemDetailPage {
 
   setPercents() {
     console.log(this.percents);
+    this.nums=[];
     for(let l=0; l<this.percents.length;l++){
       this.nums.push((this.percents[l].com/this.percents[l].all)*100);
     }
