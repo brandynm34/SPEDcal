@@ -16,13 +16,15 @@ export class ItemDetailPage {
   @ViewChild('barCanvas') barCanvas;
 
   barChart: any;
-  iconsMonday = [];
-  iconsTuesday = [];
-  iconsWednesday =[];
-  iconsThursday = [];
-  iconsFriday = [];
   item: any;
   form: FormGroup;
+
+  iconsMonday = ['Breakfast', 'Circle Time', 'Reading', 'Senory', 'Snack', 'Pack Up'];
+  iconsTuesday = ['Breakfast', 'Speech', 'PE', 'Potty', 'Writing','Occupational Therapy','Pack Up'];
+  iconsWednesday =['Breakfast', 'Autism Class', 'Snack', 'Pack Up'];
+  iconsThursday = ['Breakfast', 'Arts and Craft', 'Circle Time', 'Senory', 'Recess', 'Pack Up'];
+  iconsFriday = ['Breakfast', 'Speech', 'Potty', 'Reading', 'Writing' ,'Lunch', 'Pack Up'];
+
 
   constructor(
     public navCtrl: NavController,
@@ -32,16 +34,6 @@ export class ItemDetailPage {
     students: Items) {
       this.item = navParams.get('item') || students.defaultItem;
       console.log('data', students.query());
-
-      //generates number place hold on itemReorder
-      for (let x=0; x <10; x++){
-        this.iconsMonday.push(x)
-        this.iconsTuesday.push(x)
-        this.iconsWednesday.push(x)
-        this.iconsThursday.push(x)
-        this.iconsFriday.push(x)
-
-    }
   }
 
   openItem() {
@@ -134,5 +126,4 @@ export class ItemDetailPage {
     this.iconsFriday.splice(indexes.to, 0, element);
     console.log("friday", indexes)
   }
-
 }

@@ -16,7 +16,7 @@
       </ion-col>
       <ion-col  col-12 col-md-8>
         <div class="item-detail" padding>
-          <button ion-button (click)="openEditPage(item)" id="btn">Edit</button>
+          <button ion-button id="btn">Edit</button>
           <h2>{{ item.first_name }} {{ item.last_name }}</h2>
           <p>Group Number: {{item.group_number}} </p>
           <p>Notes: </p>
@@ -37,7 +37,7 @@
   </ion-card>
 
   <!-- CALENDAR STARTS -->
-  <h1 class="caltitle"> {{item.name}}'s Schedule </h1>
+  <h1 class="caltitle"> {{item.first_name}}'s Schedule </h1>
   <ion-row class="text-center">
     <div class="button-today-task">
       <button ion-button icon-only block round (click)="openSchedule()">Today's Schedule</button>
