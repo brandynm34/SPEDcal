@@ -18,6 +18,29 @@ export class ItemDetailPage {
   barChart: any;
   item: any;
   form: FormGroup;
+  percents = [
+    {
+      all:0,
+      com:0
+    },
+    {
+      all:0,
+      com:0
+    },
+    {
+      all:0,
+      com:0
+    },
+    {
+      all:0,
+      com:0
+    },
+    {
+      all:0,
+      com:0
+    }
+  ];
+  nums = [];
 
   iconsMonday = ['Breakfast', 'Circle Time', 'Reading', 'Senory', 'Snack', 'Pack Up'];
   iconsTuesday = ['Breakfast', 'Speech', 'PE', 'Potty', 'Writing','Occupational Therapy','Pack Up'];
@@ -33,20 +56,71 @@ export class ItemDetailPage {
     public viewCtrl: ViewController,
     students: Items) {
       this.item = navParams.get('item') || students.defaultItem;
-      console.log('data', students.query());
+      console.log('item', this.item);
+      this.getTaskStatus();
+      this.setPercents();
+
+      //generates number place hold on itemReorder
+    //   for (let x=0; x <10; x++){
+    //     this.iconsMonday.push(x)
+    //     this.iconsTuesday.push(x)
+    //     this.iconsWednesday.push(x)
+    //     this.iconsThursday.push(x)
+    //     this.iconsFriday.push(x)
+    //
+    // }
   }
 
-  openItem() {
-        let modal = this.modalCtrl.create('TasksPage');
-        console.log("working");
-        modal.present();
-      }
+  openItem(item: Item) {
+    let modal = this.modalCtrl.create('TasksPage', {
+      item: this.item
+    });
+    modal.present();
+  }
 
-  openSchedule() {
-            let modal = this.modalCtrl.create('TodaysSchedulePage');
-            console.log("working");
-            modal.present();
-          }
+  openSchedule(item: Item) {
+    let modal = this.modalCtrl.create('TodaysSchedulePage', {
+      item: this.item
+    });
+    modal.present();
+    modal.onDidDismiss(() => {
+      this.getTaskStatus();
+      this.setPercents();
+      this.ionViewDidLoad()
+    });
+  }
+
+  getTaskStatus() {
+    this.resetTask();
+    for(let i=0; i<5; i++){
+      for(let j=0; j<this.item.calendar[i].tasks.length; j++){
+        this.percents[i].all = this.item.calendar[i].tasks.length;
+        if(this.item.calendar[i].tasks[j].completed){
+          this.percents[i].com+=1;
+        }
+      }
+    }
+  }
+
+  resetTask() {
+    for(let i=0; i<5; i++){
+      for(let j=0; j<this.item.calendar[i].tasks.length; j++){
+        this.percents[i].all = this.item.calendar[i].tasks.length;
+        if(this.item.calendar[i].tasks[j].completed){
+          this.percents[i].com=0;
+        }
+      }
+    }
+  }
+
+  setPercents() {
+    console.log(this.percents);
+    this.nums=[];
+    for(let l=0; l<this.percents.length;l++){
+      this.nums.push((this.percents[l].com/this.percents[l].all)*100);
+    }
+    console.log(this.nums);
+  }
 
   ionViewDidLoad() {
     this.barChart = new Chart(this.barCanvas.nativeElement, {
@@ -55,7 +129,7 @@ export class ItemDetailPage {
         labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
         datasets: [{
           label: 'Percentage done',
-          data: [100, 90, 30, 80, 50],
+          data: [this.nums[0], this.nums[1], this.nums[2], this.nums[3], this.nums[4]],
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',

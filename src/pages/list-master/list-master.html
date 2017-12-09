@@ -19,7 +19,7 @@
     <ion-item-sliding *ngFor="let item of currentItems">
       <button ion-item (click)="openItem(item)">
         <ion-avatar item-start>
-          <img [src]="item.profilePic" />
+          <img [src]="item.profile_pic" />
         </ion-avatar>
         <h2>{{item.first_name}} {{item.last_name}}</h2>
         <p>Group: {{item.group_number}}</p>
