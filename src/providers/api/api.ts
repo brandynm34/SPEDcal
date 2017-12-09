@@ -45,8 +45,12 @@ export class Api {
     
   }
 
-  post(endpoint: string, body: object, reqOpts?: any) {
+  post(endpoint: string, body: object, id?: string, reqOpts?: any) {
     let loc = this.url + '/' + endpoint;
+    if(id!=undefined){
+      loc = this.url + '/' + endpoint + "/" + id;
+      console.log(loc);
+    }
     return this.http.post(loc, body, reqOpts);
   }
 

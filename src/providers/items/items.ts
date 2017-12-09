@@ -48,6 +48,15 @@ export class Items {
 
   }
 
+  updateCal(item: Item, id) {
+    this.api.post('students/cal', item, id)
+    .subscribe(data => {
+      console.log(data);
+   }, error => {
+     console.log(error); 
+   });
+  }
+
   add(item: Item) {
     var headers = new Headers();
     headers.append("Accept", 'application/json');
@@ -55,7 +64,7 @@ export class Items {
     headers.append("Access-Control-Allow-Origin", "*");
     headers.append("Access-Control-Allow-Methods","POST");
     headers.append("Access-Control-Allow-Headers","Content-Type, Authorization");
-    this.api.post('events', item, headers)
+    this.api.post('events', item)
     .subscribe(data => {
        console.log(data);
     }, error => {

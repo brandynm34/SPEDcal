@@ -17,18 +17,28 @@ import { Items } from '../../providers/providers';
 export class TodaysSchedulePage {
   student: any;
   calendar: any;
-  today: string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, students: Items) {
+  today: any;
+  day: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public students: Items) {
     this.student = navParams.get('item');
-    console.log('student schedule', this.student);
-    let today = new Date();
-    if(today.getDay()>-1 && today.getDay()<5) {
-      this.calendar = this.student.calendar[today.getDay()-1].tasks;
-      this.today = this.student.calendar[today.getDay()-1].day;
+    this.today = new Date();
+    if(this.today.getDay()>-1 && this.today.getDay()<=5) {
+      this.calendar = this.student.calendar[this.today.getDay()-1].tasks;
+      this.today = this.student.calendar[this.today.getDay()-1].day;
+    } else {
+      let weekend = ["Saturday","","","","","", "Sunday"];
+      this.calendar = {};
+      this.today = weekend[this.today.getDay()];
     }
   }
 
+  updateCal(calendar){ 
+    this.students.updateCal(calendar, this.student._id);
+  }
+
   dismiss() {
+    this.updateCal(this.student);
     this.viewCtrl.dismiss();
   }
 
