@@ -52,7 +52,7 @@ export class ItemDetailPage {
     navParams: NavParams,
     public modalCtrl: ModalController,
     public viewCtrl: ViewController,
-    students: Items) {
+    public students: Items) {
       this.item = navParams.get('item') || students.defaultItem;
       console.log('item', this.item);
       this.getTaskStatus();
@@ -84,8 +84,31 @@ export class ItemDetailPage {
     modal.onDidDismiss(() => {
       this.getTaskStatus();
       this.setPercents();
-      this.ionViewDidLoad()
+      this.ionViewDidLoad();
     });
+  }
+
+  /****
+   * needs to be linked to button
+   */
+  resetCalendar() {
+    for(let i=0; i<5; i++){
+      for(let j=0; j<this.item.calendar[i].tasks.length; j++){
+        this.item.calendar[i].tasks[j].completed = false;
+      }
+    }
+  }
+
+  resetWeek() {
+    this.resetCalendar();
+    this.students.updateCal(this.item, this.item._id);
+    this.graphRefresh();
+  }
+
+  graphRefresh() {
+    this.getTaskStatus();
+    this.setPercents();
+    this.ionViewDidLoad();
   }
 
   getTaskStatus() {
