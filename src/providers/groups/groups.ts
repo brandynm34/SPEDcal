@@ -6,6 +6,13 @@ import { Api } from '../api/api';
 @Injectable()
 export class Groups {
 
+  defaultItem: any = {
+
+  };
+
+  data: any = [];
+
+
   constructor(public api: Api) { }
 
   query(params?: any) {

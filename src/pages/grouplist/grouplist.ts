@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
 import { Group } from '../../models/group';
 import { Groups } from '../../providers/providers';
 
@@ -9,9 +10,10 @@ import { Groups } from '../../providers/providers';
 @Component({
   selector: 'page-grouplist',
   templateUrl: 'grouplist.html',
+  providers: [Groups]
 })
 export class GrouplistPage {
-  currentGroups: Group[];
+  currentGroups: any;
 
   constructor(public navCtrl: NavController, public groups: Groups, public navParams: NavParams) {
       this.currentGroups = this.groups.query();
@@ -31,10 +33,8 @@ export class GrouplistPage {
    * Navigate to the detail page for this item.
    */
   openItem(group: Group) {
-    this.navCtrl.push('ListMasterPage', {
+    this.navCtrl.push('GroupDetailPage', {
       group: group
     });
   }
-
-
 }
