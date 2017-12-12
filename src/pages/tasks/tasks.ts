@@ -22,34 +22,6 @@ export class TasksPage {
   day: any;
   allTasks = [
   {
-    name:'Breakfast',
-    in:false
-  },
-  {
-    name:'Lunch',
-    in:false
-  },
-  {
-    name:'Snack',
-    in:false
-  },
-  {
-    name:'Potty',
-    in:false
-  },
-  {
-    name:'Circle Time',
-    in:false
-  },
-  {
-    name:'Screen Time',
-    in:false
-  },
-  {
-    name:'Recess',
-    in:false
-  },
-  {
     name:'Art and Crafts',
     in:false
   },
@@ -62,7 +34,19 @@ export class TasksPage {
     in:false
   },
   {
-    name:'Therapy',
+    name:'Breakfast',
+    in:false
+  },
+  {
+    name:'Circle Time',
+    in:false
+  },
+  {
+    name:'Lunch',
+    in:false
+  },
+  {
+    name:'Occupational Therapy',
     in:false
   },
   {
@@ -70,7 +54,27 @@ export class TasksPage {
     in:false
   },
   {
+    name:'Potty',
+    in:false
+  },
+  {
+    name:'Reading',
+    in:false
+  },
+  {
+    name:'Recess',
+    in:false
+  },
+  {
+    name:'Screen Time',
+    in:false
+  },
+  {
     name:'Sensory',
+    in:false
+  },
+  {
+    name:'Snack',
     in:false
   },
   {
@@ -79,10 +83,6 @@ export class TasksPage {
   },
   {
     name:'Writing',
-    in:false
-  },
-  {
-    name:'Reading',
     in:false
   }];
   constructor(public navCtrl: NavController, public navParams: NavParams, public students: Items, public viewCtrl: ViewController
@@ -100,7 +100,7 @@ export class TasksPage {
       }).indexOf(this.allTasks[i].name.toLowerCase());
       if(index > -1) {
         this.allTasks[i].in = true;
-      } 
+      }
     }
   }
 
