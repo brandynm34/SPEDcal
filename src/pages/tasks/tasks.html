@@ -23,69 +23,9 @@
 
 
 <ion-content padding >
-  <ion-item>
-    <ion-label>Breakfast</ion-label>
-    <ion-checkbox [(ngModel)]='breakfast'> </ion-checkbox>
+  <ion-item *ngFor="let task of allTasks">
+    <ion-label>{{task.name}}</ion-label>
+    <ion-checkbox [(ngModel)]='task.in' [checked]="task.in"> </ion-checkbox>
   </ion-item>
-  <ion-item>
-    <ion-label>Lunch</ion-label>
-    <ion-checkbox [(ngModel)]="lunch"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>Snack</ion-label>
-    <ion-checkbox [(ngModel)]="Snack"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>Potty</ion-label>
-    <ion-checkbox [(ngModel)]="potty"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>Circle Time</ion-label>
-    <ion-checkbox [(ngModel)]="circleTime"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>Screen Time</ion-label>
-    <ion-checkbox [(ngModel)]="screenTime"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>Recess</ion-label>
-    <ion-checkbox [(ngModel)]="recess"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>Reading</ion-label>
-    <ion-checkbox [(ngModel)]="reading"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>Arts and Carfts</ion-label>
-    <ion-checkbox [(ngModel)]="artAndCrafts"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>Autism Class</ion-label>
-    <ion-checkbox [(ngModel)]="autismClass"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>Pack Up</ion-label>
-    <ion-checkbox [(ngModel)]="packUp"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>Occcupational Therapy</ion-label>
-    <ion-checkbox [(ngModel)]="occTherapy"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>PE</ion-label>
-    <ion-checkbox [(ngModel)]="PE"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>Senory</ion-label>
-    <ion-checkbox [(ngModel)]="senory"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>Speech</ion-label>
-    <ion-checkbox [(ngModel)]="speech"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>Writing</ion-label>
-    <ion-checkbox [(ngModel)]="writing"></ion-checkbox>
-  </ion-item>
-  <button ion-button block (click)="dismiss()">okay</button>
+  <button ion-button block (click)="updateTasks()">okay</button>
 </ion-content>
