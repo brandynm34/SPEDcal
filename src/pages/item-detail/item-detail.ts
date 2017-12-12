@@ -100,7 +100,12 @@ export class ItemDetailPage {
   }
 
   graphRefresh() {
-    this.getTaskStatus();
+    for(let i=0; i<5; i++){
+      for(let j=0; j<this.item.calendar[i].tasks.length; j++){
+        this.percents[i].all = this.item.calendar[i].tasks.length;
+          this.percents[i].com=0;
+      }
+    }
     this.setPercents();
     this.ionViewDidLoad();
   }
