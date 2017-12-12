@@ -14,10 +14,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ItemDetailPage {
   @ViewChild('barCanvas') barCanvas;
-
   barChart: any;
   item: any;
   form: FormGroup;
+  student: any;
+  calendar: any;
+  calMonday: any;
+  calTuesday: any;
+  calWednesday: any;
+  calThursday: any;
+  calFriday: any;
+
   percents = [
     {
       all:0,
@@ -42,38 +49,31 @@ export class ItemDetailPage {
   ];
   nums = [];
 
-  iconsMonday = ['Breakfast', 'Circle Time', 'Reading', 'Senory', 'Snack', 'Pack Up'];
-  iconsTuesday = ['Breakfast', 'Speech', 'PE', 'Potty', 'Writing','Occupational Therapy','Pack Up'];
-  iconsWednesday =['Breakfast', 'Autism Class', 'Snack', 'Pack Up'];
-  iconsThursday = ['Breakfast', 'Arts and Craft', 'Circle Time', 'Senory', 'Recess', 'Pack Up'];
-  iconsFriday = ['Breakfast', 'Speech', 'Potty', 'Reading', 'Writing' ,'Lunch', 'Pack Up'];
-
-
   constructor(
     public navCtrl: NavController,
     navParams: NavParams,
     public modalCtrl: ModalController,
     public viewCtrl: ViewController,
-    students: Items) {
+    public students: Items) {
+      this.student = navParams.get('item');
       this.item = navParams.get('item') || students.defaultItem;
       console.log('item', this.item);
       this.getTaskStatus();
       this.setPercents();
+      // calls tasks for individual days
+      this.calMonday = this.student.calendar[0].tasks;
+      this.calTuesday = this.student.calendar[1].tasks;
+      this.calWednesday = this.student.calendar[2].tasks;
+      this.calThursday = this.student.calendar[3].tasks;
+      this.calFriday = this.student.calendar[4].tasks;
 
-      //generates number place hold on itemReorder
-    //   for (let x=0; x <10; x++){
-    //     this.iconsMonday.push(x)
-    //     this.iconsTuesday.push(x)
-    //     this.iconsWednesday.push(x)
-    //     this.iconsThursday.push(x)
-    //     this.iconsFriday.push(x)
-    //
-    // }
+
   }
+
 
   openItem(item: Item) {
     let modal = this.modalCtrl.create('TasksPage', {
-      item: this.item
+      item: this.item, day: this.calMonday
     });
     modal.present();
   }
@@ -121,6 +121,8 @@ export class ItemDetailPage {
     }
     console.log(this.nums);
   }
+
+
 
   ionViewDidLoad() {
     this.barChart = new Chart(this.barCanvas.nativeElement, {
@@ -171,33 +173,35 @@ export class ItemDetailPage {
   }
 
   reorderIconsMonday(indexes) {
-    let element = this.iconsMonday[indexes.from];
-    this.iconsMonday.splice(indexes.from, 1);
-    this.iconsMonday.splice(indexes.to, 0, element);
-    console.log("Monday", indexes)
+    let element = this.calMonday[indexes.from];
+    this.calMonday.splice(indexes.from, 1);
+    this.calMonday.splice(indexes.to, 0, element);
+    this.students.updateCal(this.item, this.item._id);
+    console.log("Monday", indexes.from, indexes.to)
+    console.log(this.student.calendar)
   }
   reorderIconsTuesday(indexes) {
-    let element = this.iconsTuesday[indexes.from];
-    this.iconsTuesday.splice(indexes.from, 1);
-    this.iconsTuesday.splice(indexes.to, 0, element);
+    let element = this.calTuesday[indexes.from];
+    this.calTuesday.splice(indexes.from, 1);
+    this.calTuesday.splice(indexes.to, 0, element);
     console.log("Tuesday", indexes)
   }
   reorderIconsWednesday(indexes) {
-    let element = this.iconsWednesday[indexes.from];
-    this.iconsWednesday.splice(indexes.from, 1);
-    this.iconsWednesday.splice(indexes.to, 0, element);
+    let element = this.calWednesday[indexes.from];
+    this.calWednesday.splice(indexes.from, 1);
+    this.calWednesday.splice(indexes.to, 0, element);
     console.log("Wednesday", indexes)
   }
   reorderIconsThursday(indexes) {
-    let element = this.iconsThursday[indexes.from];
-    this.iconsThursday.splice(indexes.from, 1);
-    this.iconsThursday.splice(indexes.to, 0, element);
+    let element = this.calThursday[indexes.from];
+    this.calThursday.splice(indexes.from, 1);
+    this.calThursday.splice(indexes.to, 0, element);
     console.log("Thursday", indexes)
   }
   reorderIconsFriday(indexes) {
-    let element = this.iconsFriday[indexes.from];
-    this.iconsFriday.splice(indexes.from, 1);
-    this.iconsFriday.splice(indexes.to, 0, element);
+    let element = this.calFriday[indexes.from];
+    this.calFriday.splice(indexes.from, 1);
+    this.calFriday.splice(indexes.to, 0, element);
     console.log("friday", indexes)
   }
 }

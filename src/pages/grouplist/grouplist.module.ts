@@ -10,6 +10,7 @@ import { GrouplistPage } from './grouplist';
     IonicPageModule.forChild(GrouplistPage),
   ],
   exports: [
+  
   ]
 })
 export class GrouplistPageModule {}
