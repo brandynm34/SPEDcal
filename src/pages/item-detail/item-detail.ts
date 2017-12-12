@@ -70,14 +70,6 @@ export class ItemDetailPage {
 
   }
 
-
-  openItem(item: Item) {
-    let modal = this.modalCtrl.create('TasksPage', {
-      item: this.item, day: this.calMonday
-    });
-    modal.present();
-  }
-
   openSchedule(item: Item) {
     let modal = this.modalCtrl.create('TodaysSchedulePage', {
       item: this.item
@@ -86,8 +78,36 @@ export class ItemDetailPage {
     modal.onDidDismiss(() => {
       this.getTaskStatus();
       this.setPercents();
-      this.ionViewDidLoad()
+      this.ionViewDidLoad();
     });
+  }
+
+  /****
+   * needs to be linked to button
+   */
+  resetCalendar() {
+    for(let i=0; i<5; i++){
+      for(let j=0; j<this.item.calendar[i].tasks.length; j++){
+        this.item.calendar[i].tasks[j].completed = false;
+      }
+    }
+    this.students.updateCal(this.item, this.item._id);
+  }
+
+  resetWeek() {
+    this.resetCalendar();
+    this.graphRefresh();
+  }
+
+  graphRefresh() {
+    for(let i=0; i<5; i++){
+      for(let j=0; j<this.item.calendar[i].tasks.length; j++){
+        this.percents[i].all = this.item.calendar[i].tasks.length;
+          this.percents[i].com=0;
+      }
+    }
+    this.setPercents();
+    this.ionViewDidLoad();
   }
 
   getTaskStatus() {
@@ -114,7 +134,6 @@ export class ItemDetailPage {
   }
 
   setPercents() {
-    console.log(this.percents);
     this.nums=[];
     for(let l=0; l<this.percents.length;l++){
       this.nums.push((this.percents[l].com/this.percents[l].all)*100);
