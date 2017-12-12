@@ -39,12 +39,12 @@ export class LoginPage {
     }, (err) => {
       this.navCtrl.push(MainPage);
       // Unable to log in
-      let toast = this.toastCtrl.create({
+      /*let toast = this.toastCtrl.create({
         message: this.loginErrorString,
         duration: 3000,
         position: 'top'
       });
-      toast.present();
+      toast.present();*/
     });
   }
 }

@@ -11,7 +11,7 @@
   <ion-grid>
     <ion-row>
       <ion-col col-12 col-md-4 >
-        <div class="item-profile"  text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">
+        <div class="item-profile"  text-center #profilePic [style.background-image]="'url(' + item.profile_pic + ')'">
         </div>
       </ion-col>
       <ion-col  col-12 col-md-8>
@@ -32,6 +32,11 @@
         Weekly Progress
     </ion-card-header>
     <ion-card-content>
+      <ion-row class="text-center">
+        <div class="button-today-task">
+          <button ion-button icon-only block round (click)="resetWeek()">Reset Week</button>
+        </div>
+      </ion-row>
       <canvas  #barCanvas ></canvas>
     </ion-card-content>
   </ion-card>

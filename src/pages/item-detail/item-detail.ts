@@ -59,15 +59,10 @@ export class ItemDetailPage {
       this.setPercents();
 
       //generates number place hold on itemReorder
-      for (let x=0; x <10; x++){
-        this.iconsMonday.push(x)
-        this.iconsTuesday.push(x)
-        this.iconsWednesday.push(x)
-        this.iconsThursday.push(x)
-        this.iconsFriday.push(x)
 
-    }
   }
+
+
 
   openItem(item: Item) {
     let modal = this.modalCtrl.create('TasksPage', {
@@ -97,11 +92,11 @@ export class ItemDetailPage {
         this.item.calendar[i].tasks[j].completed = false;
       }
     }
+    this.students.updateCal(this.item, this.item._id);
   }
 
   resetWeek() {
     this.resetCalendar();
-    this.students.updateCal(this.item, this.item._id);
     this.graphRefresh();
   }
 
@@ -135,7 +130,6 @@ export class ItemDetailPage {
   }
 
   setPercents() {
-    console.log(this.percents);
     this.nums=[];
     for(let l=0; l<this.percents.length;l++){
       this.nums.push((this.percents[l].com/this.percents[l].all)*100);

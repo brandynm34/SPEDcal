@@ -58,12 +58,6 @@ export class Items {
   }
 
   add(item: Item) {
-    var headers = new Headers();
-    headers.append("Accept", 'application/json');
-    headers.append('Content-Type', 'application/json' );
-    headers.append("Access-Control-Allow-Origin", "*");
-    headers.append("Access-Control-Allow-Methods","POST");
-    headers.append("Access-Control-Allow-Headers","Content-Type, Authorization");
     this.api.post('events', item)
     .subscribe(data => {
        console.log(data);
