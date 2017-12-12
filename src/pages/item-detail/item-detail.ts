@@ -122,7 +122,9 @@ export class ItemDetailPage {
     console.log(this.nums);
   }
 
-
+  updateCal(calendar){
+    this.students.updateCal(calendar, this.student._id);
+  }
 
   ionViewDidLoad() {
     this.barChart = new Chart(this.barCanvas.nativeElement, {
@@ -178,30 +180,30 @@ export class ItemDetailPage {
     this.calMonday.splice(indexes.to, 0, element);
     this.students.updateCal(this.item, this.item._id);
     console.log("Monday", indexes.from, indexes.to)
-    console.log(this.student.calendar)
+    console.log(this.student.calendar[0])
   }
   reorderIconsTuesday(indexes) {
     let element = this.calTuesday[indexes.from];
     this.calTuesday.splice(indexes.from, 1);
     this.calTuesday.splice(indexes.to, 0, element);
-    console.log("Tuesday", indexes)
+    // console.log("Tuesday", indexes)
   }
   reorderIconsWednesday(indexes) {
     let element = this.calWednesday[indexes.from];
     this.calWednesday.splice(indexes.from, 1);
     this.calWednesday.splice(indexes.to, 0, element);
-    console.log("Wednesday", indexes)
+    // console.log("Wednesday", indexes)
   }
   reorderIconsThursday(indexes) {
     let element = this.calThursday[indexes.from];
     this.calThursday.splice(indexes.from, 1);
     this.calThursday.splice(indexes.to, 0, element);
-    console.log("Thursday", indexes)
+    // console.log("Thursday", indexes)
   }
   reorderIconsFriday(indexes) {
     let element = this.calFriday[indexes.from];
     this.calFriday.splice(indexes.from, 1);
     this.calFriday.splice(indexes.to, 0, element);
-    console.log("friday", indexes)
+    // console.log("friday", indexes)
   }
 }
