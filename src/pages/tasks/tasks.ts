@@ -94,7 +94,6 @@ export class TasksPage {
 
   // for loop that use .indexOf "name" change in bool in local arr obj
   findTasks(student) {
-    console.log(this.day);
     for(let i=0; i<this.allTasks.length; i++) {
       let index = student.calendar[this.day].tasks.map(function(el) {
         return el.name.toLowerCase();
