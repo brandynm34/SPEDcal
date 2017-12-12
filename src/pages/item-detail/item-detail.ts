@@ -69,9 +69,9 @@ export class ItemDetailPage {
 
 
   }
-  openItem(item: Item) {
+  openItem(item: Item, day) {
      let modal = this.modalCtrl.create('TasksPage', {
-       item: this.item, day: this.calMonday
+       item: item, day: day
      });
      modal.present();
    }
