@@ -179,31 +179,35 @@ export class ItemDetailPage {
     this.calMonday.splice(indexes.from, 1);
     this.calMonday.splice(indexes.to, 0, element);
     this.students.updateCal(this.item, this.item._id);
-    console.log("Monday", indexes.from, indexes.to)
-    console.log(this.student.calendar[0])
+    // console.log("Monday", indexes.from, indexes.to)
+    // console.log(this.student.calendar[0])
   }
   reorderIconsTuesday(indexes) {
     let element = this.calTuesday[indexes.from];
     this.calTuesday.splice(indexes.from, 1);
     this.calTuesday.splice(indexes.to, 0, element);
+    this.students.updateCal(this.item, this.item._id);
     // console.log("Tuesday", indexes)
   }
   reorderIconsWednesday(indexes) {
     let element = this.calWednesday[indexes.from];
     this.calWednesday.splice(indexes.from, 1);
     this.calWednesday.splice(indexes.to, 0, element);
+    this.students.updateCal(this.item, this.item._id);
     // console.log("Wednesday", indexes)
   }
   reorderIconsThursday(indexes) {
     let element = this.calThursday[indexes.from];
     this.calThursday.splice(indexes.from, 1);
     this.calThursday.splice(indexes.to, 0, element);
+    this.students.updateCal(this.item, this.item._id);
     // console.log("Thursday", indexes)
   }
   reorderIconsFriday(indexes) {
     let element = this.calFriday[indexes.from];
     this.calFriday.splice(indexes.from, 1);
     this.calFriday.splice(indexes.to, 0, element);
+    this.students.updateCal(this.item, this.item._id);
     // console.log("friday", indexes)
   }
 }
