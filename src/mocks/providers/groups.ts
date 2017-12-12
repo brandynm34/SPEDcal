@@ -9,7 +9,7 @@ export class Groups {
 
     defaultGroup: any = {
       "name": "Group Number",
-      "id": "1"
+      "id": "1",
     };
 
 constructor() {
@@ -21,18 +21,6 @@ constructor() {
       {
         "name": "Group Number",
         "id": "2"
-      },
-      {
-        "name": "Group Number",
-        "id": "3"
-      },
-      {
-        "name": "Group Number",
-        "id": "4"
-      },
-      {
-        "name": "Group Number",
-        "id": "5"
       },
   ];
 

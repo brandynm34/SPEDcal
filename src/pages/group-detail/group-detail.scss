@@ -1,3 +1,18 @@
 page-group-detail {
+  .profile-img-wrapper {
+    // background: url('assets/img/boy1.jpg');
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    margin-left: 15%;
+    margin-top: 5%;
+    // object-fit: cover;
+    img {
+      border-radius: 50%;
+      width: 250px;
+      height: 250px;
+    }
+
+  }
 
 }
