@@ -22,18 +22,6 @@ constructor() {
         "name": "Group Number",
         "id": "2"
       },
-      {
-        "name": "Group Number",
-        "id": "3"
-      },
-      {
-        "name": "Group Number",
-        "id": "4"
-      },
-      {
-        "name": "Group Number",
-        "id": "5"
-      },
   ];
 
   for (let group of groups) {
