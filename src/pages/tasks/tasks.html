@@ -6,7 +6,7 @@
 -->
 
 
- 
+
 
 <ion-header>
   <ion-toolbar>
@@ -21,14 +21,15 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+
+<ion-content padding >
   <ion-item>
     <ion-label>Breakfast</ion-label>
-    <ion-checkbox [(ngModel)]="Breakfast"></ion-checkbox>
+    <ion-checkbox [(ngModel)]='breakfast'> </ion-checkbox>
   </ion-item>
   <ion-item>
     <ion-label>Lunch</ion-label>
-    <ion-checkbox [(ngModel)]="Lunch"></ion-checkbox>
+    <ion-checkbox [(ngModel)]="lunch"></ion-checkbox>
   </ion-item>
   <ion-item>
     <ion-label>Snack</ion-label>
@@ -36,19 +37,15 @@
   </ion-item>
   <ion-item>
     <ion-label>Potty</ion-label>
-    <ion-checkbox [(ngModel)]="Potty"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>Gen Ed Class</ion-label>
-    <ion-checkbox [(ngModel)]="GenEdClass"></ion-checkbox>
+    <ion-checkbox [(ngModel)]="potty"></ion-checkbox>
   </ion-item>
   <ion-item>
     <ion-label>Circle Time</ion-label>
-    <ion-checkbox [(ngModel)]="CircleTime"></ion-checkbox>
+    <ion-checkbox [(ngModel)]="circleTime"></ion-checkbox>
   </ion-item>
   <ion-item>
     <ion-label>Screen Time</ion-label>
-    <ion-checkbox [(ngModel)]="ScreenTime"></ion-checkbox>
+    <ion-checkbox [(ngModel)]="screenTime"></ion-checkbox>
   </ion-item>
   <ion-item>
     <ion-label>Recess</ion-label>
@@ -57,6 +54,38 @@
   <ion-item>
     <ion-label>Reading</ion-label>
     <ion-checkbox [(ngModel)]="reading"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label>Arts and Carfts</ion-label>
+    <ion-checkbox [(ngModel)]="artAndCrafts"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label>Autism Class</ion-label>
+    <ion-checkbox [(ngModel)]="autismClass"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label>Pack Up</ion-label>
+    <ion-checkbox [(ngModel)]="packUp"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label>Occcupational Therapy</ion-label>
+    <ion-checkbox [(ngModel)]="occTherapy"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label>PE</ion-label>
+    <ion-checkbox [(ngModel)]="PE"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label>Senory</ion-label>
+    <ion-checkbox [(ngModel)]="senory"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label>Speech</ion-label>
+    <ion-checkbox [(ngModel)]="speech"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label>Writing</ion-label>
+    <ion-checkbox [(ngModel)]="writing"></ion-checkbox>
   </ion-item>
   <button ion-button block (click)="dismiss()">okay</button>
 </ion-content>
