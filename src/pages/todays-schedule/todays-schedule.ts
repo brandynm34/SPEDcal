@@ -28,7 +28,7 @@ export class TodaysSchedulePage {
       this.today = this.student.calendar[this.today.getDay()-1].day;
     } else {
       let weekend = ["Saturday","","","","","", "Sunday"];
-      this.calendar = {};
+      this.calendar = [];
       this.today = weekend[this.today.getDay()];
     }
   }

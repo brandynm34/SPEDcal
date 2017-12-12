@@ -16,36 +16,9 @@
 <ion-content padding>
   <ion-grid>
     <ion-row>
-      <ion-col>
+      <ion-col col-4 *ngFor="let student of members" (click)="openSchedule(student)">
           <div>
-            <ion-img class="profile-img-wrapper" src="assets/img/speakers/boy1.jpg"></ion-img>
-          </div>
-      </ion-col>
-      <ion-col>
-          <div>
-            <ion-img class="profile-img-wrapper" src="/assets/img/boy1.jpg"></ion-img>
-          </div>
-      </ion-col>
-      <ion-col>
-          <div>
-            <ion-img class="profile-img-wrapper" src="assets/img/boy1.jpg"></ion-img>
-          </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-          <div>
-            <ion-img class="profile-img-wrapper" src="/assets/img/boy1.jpg"></ion-img>
-          </div>
-      </ion-col>
-      <ion-col>
-          <div>
-            <ion-img class="profile-img-wrapper" src="/assets/img/boy1.jpg"></ion-img>
-          </div>
-      </ion-col>
-      <ion-col>
-          <div>
-            <ion-img class="profile-img-wrapper" src="/assets/img/boy1.jpg"></ion-img>
+            <ion-img class="profile-img-wrapper" [src]="student.profile_pic"></ion-img>
           </div>
       </ion-col>
     </ion-row>

@@ -14,15 +14,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ItemDetailPage {
   @ViewChild('barCanvas') barCanvas;
-
   barChart: any;
-  iconsMonday = [];
-  iconsTuesday = [];
-  iconsWednesday =[];
-  iconsThursday = [];
-  iconsFriday = [];
   item: any;
   form: FormGroup;
+  student: any;
+  calendar: any;
+  calMonday: any;
+  calTuesday: any;
+  calWednesday: any;
+  calThursday: any;
+  calFriday: any;
+
   percents = [
     {
       all:0,
@@ -52,28 +54,20 @@ export class ItemDetailPage {
     navParams: NavParams,
     public modalCtrl: ModalController,
     public viewCtrl: ViewController,
-    students: Items) {
+    public students: Items) {
+      this.student = navParams.get('item');
       this.item = navParams.get('item') || students.defaultItem;
       console.log('item', this.item);
       this.getTaskStatus();
       this.setPercents();
+      // calls tasks for individual days
+      this.calMonday = this.student.calendar[0].tasks;
+      this.calTuesday = this.student.calendar[1].tasks;
+      this.calWednesday = this.student.calendar[2].tasks;
+      this.calThursday = this.student.calendar[3].tasks;
+      this.calFriday = this.student.calendar[4].tasks;
 
-      //generates number place hold on itemReorder
-      for (let x=0; x <10; x++){
-        this.iconsMonday.push(x)
-        this.iconsTuesday.push(x)
-        this.iconsWednesday.push(x)
-        this.iconsThursday.push(x)
-        this.iconsFriday.push(x)
 
-    }
-  }
-
-  openItem(item: Item) {
-    let modal = this.modalCtrl.create('TasksPage', {
-      item: this.item
-    });
-    modal.present();
   }
 
   openSchedule(item: Item) {
@@ -84,8 +78,36 @@ export class ItemDetailPage {
     modal.onDidDismiss(() => {
       this.getTaskStatus();
       this.setPercents();
-      this.ionViewDidLoad()
+      this.ionViewDidLoad();
     });
+  }
+
+  /****
+   * needs to be linked to button
+   */
+  resetCalendar() {
+    for(let i=0; i<5; i++){
+      for(let j=0; j<this.item.calendar[i].tasks.length; j++){
+        this.item.calendar[i].tasks[j].completed = false;
+      }
+    }
+    this.students.updateCal(this.item, this.item._id);
+  }
+
+  resetWeek() {
+    this.resetCalendar();
+    this.graphRefresh();
+  }
+
+  graphRefresh() {
+    for(let i=0; i<5; i++){
+      for(let j=0; j<this.item.calendar[i].tasks.length; j++){
+        this.percents[i].all = this.item.calendar[i].tasks.length;
+          this.percents[i].com=0;
+      }
+    }
+    this.setPercents();
+    this.ionViewDidLoad();
   }
 
   getTaskStatus() {
@@ -112,12 +134,15 @@ export class ItemDetailPage {
   }
 
   setPercents() {
-    console.log(this.percents);
     this.nums=[];
     for(let l=0; l<this.percents.length;l++){
       this.nums.push((this.percents[l].com/this.percents[l].all)*100);
     }
     console.log(this.nums);
+  }
+
+  updateCal(calendar){
+    this.students.updateCal(calendar, this.student._id);
   }
 
   ionViewDidLoad() {
@@ -169,34 +194,39 @@ export class ItemDetailPage {
   }
 
   reorderIconsMonday(indexes) {
-    let element = this.iconsMonday[indexes.from];
-    this.iconsMonday.splice(indexes.from, 1);
-    this.iconsMonday.splice(indexes.to, 0, element);
-    console.log("Monday", indexes)
+    let element = this.calMonday[indexes.from];
+    this.calMonday.splice(indexes.from, 1);
+    this.calMonday.splice(indexes.to, 0, element);
+    this.students.updateCal(this.item, this.item._id);
+    // console.log("Monday", indexes.from, indexes.to)
+    // console.log(this.student.calendar[0])
   }
   reorderIconsTuesday(indexes) {
-    let element = this.iconsTuesday[indexes.from];
-    this.iconsTuesday.splice(indexes.from, 1);
-    this.iconsTuesday.splice(indexes.to, 0, element);
-    console.log("Tuesday", indexes)
+    let element = this.calTuesday[indexes.from];
+    this.calTuesday.splice(indexes.from, 1);
+    this.calTuesday.splice(indexes.to, 0, element);
+    this.students.updateCal(this.item, this.item._id);
+    // console.log("Tuesday", indexes)
   }
   reorderIconsWednesday(indexes) {
-    let element = this.iconsWednesday[indexes.from];
-    this.iconsWednesday.splice(indexes.from, 1);
-    this.iconsWednesday.splice(indexes.to, 0, element);
-    console.log("Wednesday", indexes)
+    let element = this.calWednesday[indexes.from];
+    this.calWednesday.splice(indexes.from, 1);
+    this.calWednesday.splice(indexes.to, 0, element);
+    this.students.updateCal(this.item, this.item._id);
+    // console.log("Wednesday", indexes)
   }
   reorderIconsThursday(indexes) {
-    let element = this.iconsThursday[indexes.from];
-    this.iconsThursday.splice(indexes.from, 1);
-    this.iconsThursday.splice(indexes.to, 0, element);
-    console.log("Thursday", indexes)
+    let element = this.calThursday[indexes.from];
+    this.calThursday.splice(indexes.from, 1);
+    this.calThursday.splice(indexes.to, 0, element);
+    this.students.updateCal(this.item, this.item._id);
+    // console.log("Thursday", indexes)
   }
   reorderIconsFriday(indexes) {
-    let element = this.iconsFriday[indexes.from];
-    this.iconsFriday.splice(indexes.from, 1);
-    this.iconsFriday.splice(indexes.to, 0, element);
-    console.log("friday", indexes)
+    let element = this.calFriday[indexes.from];
+    this.calFriday.splice(indexes.from, 1);
+    this.calFriday.splice(indexes.to, 0, element);
+    this.students.updateCal(this.item, this.item._id);
+    // console.log("friday", indexes)
   }
-
 }

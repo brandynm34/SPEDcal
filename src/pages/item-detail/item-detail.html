@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar color="third">
-    <ion-title>{{ item.name }}</ion-title>
+    <ion-title>{{ item.first_name }} {{ item.last_name }}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,7 +16,7 @@
       </ion-col>
       <ion-col  col-12 col-md-8>
         <div class="item-detail" padding>
-          <button ion-button (click)="openEditPage(item)" id="btn">Edit</button>
+          <button ion-button id="btn">Edit</button>
           <h2>{{ item.first_name }} {{ item.last_name }}</h2>
           <p>Group Number: {{item.group_number}} </p>
           <p>Notes: </p>
@@ -32,12 +32,17 @@
         Weekly Progress
     </ion-card-header>
     <ion-card-content>
+      <ion-row class="text-center">
+        <div class="button-today-task">
+          <button ion-button icon-only block round (click)="resetWeek()">Reset Week</button>
+        </div>
+      </ion-row>
       <canvas  #barCanvas ></canvas>
     </ion-card-content>
   </ion-card>
 
   <!-- CALENDAR STARTS -->
-  <h1 class="caltitle"> {{item.name}}'s Schedule </h1>
+  <h1 class="caltitle"> {{item.first_name}}'s Schedule </h1>
   <ion-row class="text-center">
     <div class="button-today-task">
       <button ion-button icon-only block round (click)="openSchedule()">Today's Schedule</button>
@@ -51,7 +56,7 @@
       </button>
 
       <ion-list reorder= "true" (ionItemReorder)="reorderIconsMonday($event)">
-          <ion-item *ngFor="let iconMonday of iconsMonday">{{ iconMonday }}</ion-item>
+          <ion-item *ngFor="let task of calMonday">{{ task.name }}</ion-item>
       </ion-list>
 
     </div>
@@ -62,7 +67,7 @@
       </button>
 
       <ion-list reorder= "true" (ionItemReorder)="reorderIconsTuesday($event)">
-          <ion-item *ngFor="let iconTuesday of iconsTuesday">{{ iconTuesday }}</ion-item>
+          <ion-item *ngFor="let task of calTuesday">{{ task.name }}</ion-item>
       </ion-list>
 
     </div>
@@ -73,7 +78,7 @@
       </button>
 
       <ion-list reorder= "true" (ionItemReorder)="reorderIconsWednesday($event)">
-          <ion-item *ngFor="let iconWednesday of iconsWednesday">{{ iconWednesday }}</ion-item>
+          <ion-item *ngFor="let task of calWednesday">{{ task.name }}</ion-item>
       </ion-list>
 
     </div>
@@ -84,7 +89,7 @@
       </button>
 
       <ion-list reorder= "true" (ionItemReorder)="reorderIconsThursday($event)">
-          <ion-item *ngFor="let iconThursday of iconsThursday">{{ iconThursday }}</ion-item>
+          <ion-item *ngFor="let task of calThursday">{{ task.name }}</ion-item>
       </ion-list>
 
     </div>
@@ -95,7 +100,7 @@
       </button>
 
       <ion-list reorder= "true" (ionItemReorder)="reorderIconsFriday($event)">
-          <ion-item *ngFor="let iconFriday of iconsFriday">{{ iconFriday }}</ion-item>
+          <ion-item *ngFor="let task of calFriday">{{ task.name }}</ion-item>
       </ion-list>
 
     </div>
