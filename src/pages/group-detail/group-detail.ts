@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, ViewController, ModalController} f
 
 import { Group } from '../../models/group';
 import { Groups } from '../../providers/providers';
+import { Item } from '../../models/item';
+import { Items } from '../../providers/providers';
 
 /**
  * Generated class for the GroupDetailPage page.
@@ -15,8 +17,7 @@ import { Groups } from '../../providers/providers';
 @Component({
   selector: 'page-group-detail',
   templateUrl: 'group-detail.html',
-  providers: [Groups],
-
+  providers: [Groups, Items],
 })
 export class GroupDetailPage {
   group: any;
@@ -28,8 +29,9 @@ export class GroupDetailPage {
     public navParams: NavParams,
     public modalCtrl: ModalController,
     public viewCtrl: ViewController,
-    students: Groups) {
+    students: Groups,) {
       this.group = navParams.get('group') || students.defaultGroup;
+  
   }
 
   ionViewDidLoad() {
