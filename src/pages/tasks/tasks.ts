@@ -46,7 +46,7 @@ export class TasksPage {
     in:false
   },
   {
-    name:'Occupational Therapy',
+    name:'Therapy',
     in:false
   },
   {
@@ -110,7 +110,11 @@ export class TasksPage {
         return el.name.toLowerCase();
       }).indexOf(this.allTasks[i].name.toLowerCase());
       if (this.allTasks[i].in==true && index < 0) {
-        this.student.calendar[this.day].tasks.push({name:this.allTasks[i].name, completed: false});
+        if(this.allTasks[i].name != 'PE'){
+          this.student.calendar[this.day].tasks.push({name:this.allTasks[i].name.toLowerCase(), completed: false});
+        } else {
+          this.student.calendar[this.day].tasks.push({name:this.allTasks[i].name, completed: false});
+        }
       } if (this.allTasks[i].in==false && index > -1) {
         this.student.calendar[this.day].tasks.splice(index,1);
       }
