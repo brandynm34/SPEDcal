@@ -43,12 +43,12 @@
 
   <!-- CALENDAR STARTS -->
   <h1 class="caltitle"> {{item.first_name}}'s Schedule </h1>
-    <ion-row class="text-center">
-      <div class="button-today-task">
-        <button ion-button icon-only block round (click)="openSchedule()">Today's Schedule</button>
-      </div>
-    </ion-row>
-    <ion-row class="calendar" padding>
+  <ion-row class="text-center">
+    <div class="button-today-task">
+      <button ion-button icon-only block round (click)="openSchedule()">Today's Schedule</button>
+    </div>
+  </ion-row>
+  <ion-row class="calendar" padding>
     <div padding class="weekdays monday">
       <h2>Monday</h2>
       <button ion-button icon-only block round (click)="openItem(item, 0)">
