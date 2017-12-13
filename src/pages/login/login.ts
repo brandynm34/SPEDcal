@@ -14,9 +14,9 @@ export class LoginPage {
   // The account fields for the login form.
   // If you're using the username field with or without email, make
   // sure to add it to the type
-  account: { email: string, password: string } = {
+  account: { email: string, pw: string } = {
     email: 'test@example.com',
-    password: 'test'
+    pw: 'test'
   };
 
   // Our translated text strings
@@ -35,7 +35,17 @@ export class LoginPage {
   // Attempt to login in through our User service
   doLogin() {
     this.user.login(this.account).subscribe((resp) => {
-      this.navCtrl.push(MainPage);
+      console.log(resp);
+      //if(resp) {
+        this.navCtrl.push(MainPage);
+      /*} else {
+        let toast = this.toastCtrl.create({
+          message: this.loginErrorString,
+          duration: 3000,
+          position: 'top'
+        });
+        toast.present();
+      }*/
     }, (err) => {
       this.navCtrl.push(MainPage);
       // Unable to log in
@@ -44,7 +54,8 @@ export class LoginPage {
         duration: 3000,
         position: 'top'
       });
-      toast.present();*/
-    });
-  }
+      toast.present();
+    });*/
+  });
+}
 }

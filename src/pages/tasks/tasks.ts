@@ -22,34 +22,6 @@ export class TasksPage {
   day: any;
   allTasks = [
   {
-    name:'Breakfast',
-    in:false
-  },
-  {
-    name:'Lunch',
-    in:false
-  },
-  {
-    name:'Snack',
-    in:false
-  },
-  {
-    name:'Potty',
-    in:false
-  },
-  {
-    name:'Circle Time',
-    in:false
-  },
-  {
-    name:'Screen Time',
-    in:false
-  },
-  {
-    name:'Recess',
-    in:false
-  },
-  {
     name:'Art and Crafts',
     in:false
   },
@@ -62,6 +34,18 @@ export class TasksPage {
     in:false
   },
   {
+    name:'Breakfast',
+    in:false
+  },
+  {
+    name:'Circle Time',
+    in:false
+  },
+  {
+    name:'Lunch',
+    in:false
+  },
+  {
     name:'Therapy',
     in:false
   },
@@ -70,7 +54,27 @@ export class TasksPage {
     in:false
   },
   {
+    name:'Potty',
+    in:false
+  },
+  {
+    name:'Reading',
+    in:false
+  },
+  {
+    name:'Recess',
+    in:false
+  },
+  {
+    name:'Screen Time',
+    in:false
+  },
+  {
     name:'Sensory',
+    in:false
+  },
+  {
+    name:'Snack',
     in:false
   },
   {
@@ -79,10 +83,6 @@ export class TasksPage {
   },
   {
     name:'Writing',
-    in:false
-  },
-  {
-    name:'Reading',
     in:false
   }];
   constructor(public navCtrl: NavController, public navParams: NavParams, public students: Items, public viewCtrl: ViewController
@@ -94,14 +94,13 @@ export class TasksPage {
 
   // for loop that use .indexOf "name" change in bool in local arr obj
   findTasks(student) {
-    console.log(this.day);
     for(let i=0; i<this.allTasks.length; i++) {
       let index = student.calendar[this.day].tasks.map(function(el) {
         return el.name.toLowerCase();
       }).indexOf(this.allTasks[i].name.toLowerCase());
       if(index > -1) {
         this.allTasks[i].in = true;
-      } 
+      }
     }
   }
 
@@ -111,7 +110,11 @@ export class TasksPage {
         return el.name.toLowerCase();
       }).indexOf(this.allTasks[i].name.toLowerCase());
       if (this.allTasks[i].in==true && index < 0) {
-        this.student.calendar[this.day].tasks.push({name:this.allTasks[i].name, completed: false});
+        if(this.allTasks[i].name != 'PE'){
+          this.student.calendar[this.day].tasks.push({name:this.allTasks[i].name.toLowerCase(), completed: false});
+        } else {
+          this.student.calendar[this.day].tasks.push({name:this.allTasks[i].name, completed: false});
+        }
       } if (this.allTasks[i].in==false && index > -1) {
         this.student.calendar[this.day].tasks.splice(index,1);
       }

@@ -132,9 +132,7 @@ export class ItemDetailPage {
     for(let i=0; i<5; i++){
       for(let j=0; j<this.item.calendar[i].tasks.length; j++){
         this.percents[i].all = this.item.calendar[i].tasks.length;
-        if(this.item.calendar[i].tasks[j].completed){
-          this.percents[i].com=0;
-        }
+        this.percents[i].com=0;
       }
     }
   }
@@ -144,7 +142,6 @@ export class ItemDetailPage {
     for(let l=0; l<this.percents.length;l++){
       this.nums.push((this.percents[l].com/this.percents[l].all)*100);
     }
-    console.log(this.nums);
   }
 
   updateCal(calendar){

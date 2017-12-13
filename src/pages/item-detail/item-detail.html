@@ -34,7 +34,7 @@
     <ion-card-content>
       <ion-row class="text-center">
         <div class="button-today-task">
-          <button ion-button icon-only block round (click)="resetWeek()">Reset Week</button>
+          <button ion-button icon-only block round (click)="resetWeek()" style="background-color:red;">Reset Week</button>
         </div>
       </ion-row>
       <canvas  #barCanvas ></canvas>
@@ -56,7 +56,7 @@
       </button>
 
       <ion-list reorder= "true" (ionItemReorder)="reorderIconsMonday($event)">
-          <ion-item *ngFor="let task of calMonday">{{ task.name }}</ion-item>
+          <ion-item text-capitalize *ngFor="let task of calMonday">{{ task.name }}</ion-item>
       </ion-list>
 
     </div>
@@ -67,7 +67,7 @@
       </button>
 
       <ion-list reorder= "true" (ionItemReorder)="reorderIconsTuesday($event)">
-          <ion-item *ngFor="let task of calTuesday">{{ task.name }}</ion-item>
+          <ion-item text-capitalize *ngFor="let task of calTuesday">{{ task.name }}</ion-item>
       </ion-list>
 
     </div>
@@ -78,7 +78,7 @@
       </button>
 
       <ion-list reorder= "true" (ionItemReorder)="reorderIconsWednesday($event)">
-          <ion-item *ngFor="let task of calWednesday">{{ task.name }}</ion-item>
+          <ion-item text-capitalize *ngFor="let task of calWednesday">{{ task.name }}</ion-item>
       </ion-list>
 
     </div>
@@ -89,7 +89,7 @@
       </button>
 
       <ion-list reorder= "true" (ionItemReorder)="reorderIconsThursday($event)">
-          <ion-item *ngFor="let task of calThursday">{{ task.name }}</ion-item>
+          <ion-item text-capitalize *ngFor="let task of calThursday">{{ task.name }}</ion-item>
       </ion-list>
 
     </div>
@@ -100,7 +100,7 @@
       </button>
 
       <ion-list reorder= "true" (ionItemReorder)="reorderIconsFriday($event)">
-          <ion-item *ngFor="let task of calFriday">{{ task.name }}</ion-item>
+          <ion-item text-capitalize *ngFor="let task of calFriday">{{ task.name }}</ion-item>
       </ion-list>
 
     </div>
