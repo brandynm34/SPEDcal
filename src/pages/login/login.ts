@@ -35,27 +35,24 @@ export class LoginPage {
   // Attempt to login in through our User service
   doLogin() {
     this.user.login(this.account).subscribe((resp) => {
-      console.log(resp);
-      //if(resp) {
+      if(resp) {
         this.navCtrl.push(MainPage);
-      /*} else {
+      } else {
         let toast = this.toastCtrl.create({
           message: this.loginErrorString,
           duration: 3000,
           position: 'top'
         });
         toast.present();
-      }*/
+      }
     }, (err) => {
-      this.navCtrl.push(MainPage);
       // Unable to log in
-      /*let toast = this.toastCtrl.create({
+      let toast = this.toastCtrl.create({
         message: this.loginErrorString,
         duration: 3000,
         position: 'top'
       });
       toast.present();
-    });*/
   });
 }
 }

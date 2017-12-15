@@ -58,7 +58,7 @@ export class Items {
   }
 
   add(item: Item) {
-    this.api.post('events', item)
+    this.api.post('new/student', item)
     .subscribe(data => {
        console.log(data);
     }, error => {
