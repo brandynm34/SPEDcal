@@ -3,12 +3,14 @@ import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
 
 import { User } from '../../providers/providers';
+import { Items } from '../../providers/providers';
 import { MainPage } from '../pages';
 
 @IonicPage()
 @Component({
   selector: 'page-login',
-  templateUrl: 'login.html'
+  templateUrl: 'login.html',
+  providers : [Items]
 })
 export class LoginPage {
   // The account fields for the login form.
@@ -36,7 +38,8 @@ export class LoginPage {
   doLogin() {
     this.user.login(this.account).subscribe((resp) => {
       if(resp) {
-        this.navCtrl.push(MainPage);
+        this.user.setTeacher(resp);
+        this.navCtrl.push(MainPage, {teacher: resp});
       } else {
         let toast = this.toastCtrl.create({
           message: this.loginErrorString,

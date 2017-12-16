@@ -4,6 +4,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { IonicPage, NavController, ViewController } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
+import { User } from '../../providers/providers';
 
 @IonicPage()
 @Component({
@@ -19,12 +20,13 @@ export class ItemCreatePage {
 
   form: FormGroup;
 
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera) {
+  constructor(public navCtrl: NavController, public _class: User, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera) {
     this.form = formBuilder.group({
       profile_pic: ['', Validators.required],
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       group_number: [''],
+      teacher_id: this._class.getTeacher()._id
     });
 
     // Watch the form for changes, and
