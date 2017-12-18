@@ -61,8 +61,8 @@ export class ListMasterPage {
   /**
    * Delete an item from the list of items.
    */
-  deleteItem(id, student) {
-    this.items.delete(id);
+  deleteItem(student) {
+    this.items.delete(student._id);
     let index: number = this.currentItems.indexOf(student);
     this.currentItems.splice(index, 1);
   }

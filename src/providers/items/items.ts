@@ -68,7 +68,7 @@ export class Items {
   }
 
   delete(student: string) {
-    this.api.delete('students', student)
+    this.api.delete('remove/student', student)
     .subscribe(data => {
        console.log(data);
     }, error => {
