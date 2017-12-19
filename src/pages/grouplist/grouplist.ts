@@ -48,7 +48,7 @@ export class GrouplistPage {
   }
 
   getEvents() {
-    this.items.query()
+    this.items.query(this.teacher._id)
     .then(data => {
       this.currentItems = data;
     });
