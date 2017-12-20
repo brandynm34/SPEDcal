@@ -52,13 +52,28 @@ export class User {
     return seq;
   }
 
+  googlePlusLogin(user: any) {
+    let seq = this.api.post('login/edu', user).share();
+
+    seq.subscribe((res: any) => {
+      // If the API returned a successful response, mark the user as logged in
+      if (res.status == 'success') {
+        this._loggedIn(res);
+      } else {
+      }
+    }, err => {
+      console.error('ERROR', err);
+    });
+
+    return seq;
+  }
+
   setTeacher(teacher) {
     this.teacher = teacher;
     console.log(this.teacher);
   }
 
   getTeacher() {
-    console.log("get");
     return this.teacher;
   }
 

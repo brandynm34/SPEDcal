@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
-
+import { GooglePlus } from '@ionic-native/google-plus';
 import { User } from '../../providers/providers';
 import { Items } from '../../providers/providers';
 import { MainPage } from '../pages';
@@ -25,6 +25,7 @@ export class LoginPage {
   private loginErrorString: string;
 
   constructor(public navCtrl: NavController,
+    private googlePlus: GooglePlus,
     public user: User,
     public toastCtrl: ToastController,
     public translateService: TranslateService) {
@@ -56,6 +57,40 @@ export class LoginPage {
         position: 'top'
       });
       toast.present();
+  });
+}
+
+google() {
+  this.googlePlus.login({})
+  .then(res => {
+    this.user.googlePlusLogin(res).subscribe((resp) => {
+      if(resp) {
+        this.user.setTeacher(resp);
+        this.navCtrl.push(MainPage, {teacher: resp});
+      } else {
+        let toast = this.toastCtrl.create({
+          message: this.loginErrorString,
+          duration: 3000,
+          position: 'top'
+        });
+        toast.present();
+      }
+    }, (err) => {
+      let toast = this.toastCtrl.create({
+        message: this.loginErrorString,
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
+  });
+  })
+  .catch(err => {
+    let toast = this.toastCtrl.create({
+      message: this.loginErrorString,
+      duration: 3000,
+      position: 'top'
+    });
+    toast.present();
   });
 }
 }
