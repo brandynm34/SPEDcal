@@ -33,7 +33,7 @@ export class TodaysSchedulePage {
     }
   }
 
-  updateCal(calendar){ 
+  updateCal(calendar){
     this.students.updateCal(calendar, this.student._id);
   }
 
@@ -41,5 +41,5 @@ export class TodaysSchedulePage {
     this.updateCal(this.student);
     this.viewCtrl.dismiss();
   }
-
+  
 }
