@@ -5,13 +5,18 @@
         <div class="splash-logo"></div>
       </div>
       <div padding>
-        <ion-grid align-items-center>
+        <ion-grid>
           <ion-row>
-            <ion-col col-xs-12 col-sm-6 class="round-button">
+            <ion-col col-6 col-md class="round-button">
               <button ion-button class="round-button-circle" (click)="openStudents()">Students</button>
             </ion-col>
-            <ion-col col-xs-12 col-sm-6 class="round-button">
+            <ion-col col-6 col-md class="round-button">
               <button ion-button class="round-button-circle" (click)="openGroups()">Groups</button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12 align-self-center class="round-button">
+              <button ion-button class="round-button-rectangle" (click)="logout()">Logout</button>
             </ion-col>
           </ion-row>
        </ion-grid>
