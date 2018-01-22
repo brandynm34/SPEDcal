@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-import { ListMasterPage} from '../list-master/list-master';
-
+import { User } from '../../providers/providers';
+import { FirstRunPage } from '../pages';
+import { App } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -12,7 +12,7 @@ import { ListMasterPage} from '../list-master/list-master';
 export class Dashboard {
   teacher: any;
   constructor(
-    public navCtrl: NavController, public navParams: NavParams
+    public navCtrl: NavController, public navParams: NavParams, public user: User, private app: App
   ){
 
   }
@@ -23,6 +23,11 @@ export class Dashboard {
 
   openGroups() {
     this.navCtrl.push('GrouplistPage');
+  }
+
+  logout() {
+    this.user.logout()
+    this.app.getRootNav().setRoot(FirstRunPage);
   }
 
 
