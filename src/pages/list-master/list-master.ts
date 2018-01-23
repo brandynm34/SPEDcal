@@ -13,12 +13,16 @@ import { NavParams } from 'ionic-angular/navigation/nav-params';
   providers: [Items]
 })
 export class ListMasterPage {
+  public arr : Array<string> = [];
   currentItems: any;
   public teacher: any = {};
+  val: string = '';
 
   constructor(public navCtrl: NavController, public _class: User, public items: Items, public modalCtrl: ModalController, public nav: NavParams) {
     this.teacher = this._class.getTeacher(); 
     this.getStudents(this._class.getTeacher()._id);
+    this.arr.push('first_name');
+    this.arr.push('last_name');
   }
 
   /**
@@ -27,13 +31,8 @@ export class ListMasterPage {
   ionViewDidLoad() {
   }
 
-  doRefresh(refresh){
-    setTimeout(() => {
-      this.items.query().then(data => {
-        this.currentItems = data;
-      }); 
-      refresh.complete();
-     }, 1000);
+  getVal(ev) {
+    this.val = ev.target.value;
   }
 
   getStudents(teacher) {
@@ -52,7 +51,7 @@ export class ListMasterPage {
     addModal.onDidDismiss(item => {
       if (item) {
         this.items.add(item);
-        this.getStudents(this.teacher);
+        this.getStudents(this.teacher._id);
       }
     })
     addModal.present();

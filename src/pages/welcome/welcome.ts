@@ -19,6 +19,7 @@ export class WelcomePage {
   constructor(public navCtrl: NavController, public user: User) { 
     if(JSON.parse(localStorage.getItem('teacher')) !== null) {
       this.navCtrl.push(MainPage, {teacher: localStorage.getItem('teacher')});
+      this.user.setTeacher(JSON.parse(localStorage.getItem('teacher')));
     }
   }
 
