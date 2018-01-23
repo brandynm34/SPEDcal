@@ -29,6 +29,8 @@ platforms/
 plugins/
 plugins/android.json
 plugins/ios.json
+
+ionic.config.json
 www/
 $RECYCLE.BIN/
 
