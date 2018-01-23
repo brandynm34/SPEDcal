@@ -35,15 +35,6 @@ export class ListMasterPage {
     this.val = ev.target.value;
   }
 
-  doRefresh(refresh){
-    setTimeout(() => {
-      this.items.query().then(data => {
-        this.currentItems = data;
-      }); 
-      refresh.complete();
-     }, 1000);
-  }
-
   getStudents(teacher) {
     this.items.query(teacher)
     .then(data => {
@@ -60,7 +51,7 @@ export class ListMasterPage {
     addModal.onDidDismiss(item => {
       if (item) {
         this.items.add(item);
-        this.getStudents(this.teacher);
+        this.getStudents(this.teacher._id);
       }
     })
     addModal.present();
