@@ -13,18 +13,26 @@ import { NavParams } from 'ionic-angular/navigation/nav-params';
   providers: [Items]
 })
 export class ListMasterPage {
+  public arr : Array<string> = [];
   currentItems: any;
   public teacher: any = {};
+  val: string = '';
 
   constructor(public navCtrl: NavController, public _class: User, public items: Items, public modalCtrl: ModalController, public nav: NavParams) {
     this.teacher = this._class.getTeacher(); 
     this.getStudents(this._class.getTeacher()._id);
+    this.arr.push('first_name');
+    this.arr.push('last_name');
   }
 
   /**
    * The view loaded, let's query our items for the list
    */
   ionViewDidLoad() {
+  }
+
+  getVal(ev) {
+    this.val = ev.target.value;
   }
 
   doRefresh(refresh){

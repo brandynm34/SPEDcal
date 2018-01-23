@@ -14,9 +14,9 @@
 
 
 <ion-content>
-
+  <ion-searchbar (ionInput)="getVal($event)" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}"></ion-searchbar>
   <ion-list>
-    <ion-item-sliding *ngFor="let item of currentItems">
+    <ion-item-sliding *ngFor="let item of currentItems | searchBy: arr: [val] ">
       <button ion-item (click)="openItem(item)">
         <ion-avatar item-start>
           <img [src]="item.profile_pic" />
