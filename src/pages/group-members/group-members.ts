@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-
+import { User } from '../../providers/providers';
 /**
  * Generated class for the GroupMembersPage page.
  *
@@ -15,10 +15,12 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 })
 export class GroupMembersPage {
   group: any;
-  tempGroup =[];
+  tempMembers = [];
   students: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController, public _class: User, public navParams: NavParams, public viewCtrl: ViewController) {
+    this.group =  navParams.get('group');
+    this.temp(navParams.get('currentItems'));
     this.students = navParams.get('currentItems');
   }
 
@@ -27,10 +29,16 @@ export class GroupMembersPage {
   }
 
   temp(students) {
-    this.tempGroup = students;
-    for(let i=0; i<this.tempGroup.length; i++) {
-      this.tempGroup[i]['in'] = false;
+    for(let j=0; j<students.length; j++) {
+      this.tempMembers.push({student: students[j]});
+      let index = this.group.members.indexOf(students[j]._id);
+      if(index > -1) {
+        this.tempMembers[j]['in'] = true;
+      } else {
+        this.tempMembers[j]['in'] = false;
+      }
     }
+    console.log(this.tempMembers);
   }
 
   updateMembers() {
@@ -42,6 +50,7 @@ export class GroupMembersPage {
   }
 
   dismiss() {
+    console.log(this.tempMembers);
     this.viewCtrl.dismiss();
   }
 

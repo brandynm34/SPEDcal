@@ -64,7 +64,7 @@ export class GroupDetailPage {
 
   editGroup() {
     let modal = this.modalCtrl.create('GroupMembersPage', {
-      currentItems: this.students
+      currentItems: this.students, group: this.group
     });
     modal.present();
     modal.onDidDismiss(() => {

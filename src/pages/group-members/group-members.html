@@ -13,9 +13,9 @@
 
 
 <ion-content padding >
-  <ion-item *ngFor="let student of students">
-    <ion-label>{{student.first_name}} {{student.last_name}}</ion-label>
-    <ion-checkbox [(ngModel)]='tempGroup.in' [checked]="tempGroup.in"> </ion-checkbox>
+  <ion-item *ngFor="let student of tempMembers">
+    <ion-label>{{student.student.first_name}} {{student.student.last_name}}</ion-label>
+    <ion-checkbox [(ngModel)]='student.in' [checked]="student.in"> </ion-checkbox>
   </ion-item>
-  <button ion-button block (click)="updateTasks()">okay</button>
+  <button ion-button block (click)="updateTasks()">Save</button>
 </ion-content>
