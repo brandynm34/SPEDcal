@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Tasks
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary">Cancel</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding >
+  <ion-item *ngFor="let student of students">
+    <ion-label>{{student.first_name}} {{student.last_name}}</ion-label>
+    <ion-checkbox [(ngModel)]='tempGroup.in' [checked]="tempGroup.in"> </ion-checkbox>
+  </ion-item>
+  <button ion-button block (click)="updateTasks()">okay</button>
+</ion-content>

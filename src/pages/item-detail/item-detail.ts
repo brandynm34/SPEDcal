@@ -57,7 +57,6 @@ export class ItemDetailPage {
     public students: Items) {
       this.student = navParams.get('item');
       this.item = navParams.get('item') || students.defaultItem;
-      console.log('item', this.item);
       this.getTaskStatus();
       this.setPercents();
       // calls tasks for individual days
@@ -88,9 +87,6 @@ export class ItemDetailPage {
     });
   }
 
-  /****
-   * needs to be linked to button
-   */
   resetCalendar() {
     for(let i=0; i<5; i++){
       for(let j=0; j<this.item.calendar[i].tasks.length; j++){
@@ -201,35 +197,29 @@ export class ItemDetailPage {
     this.calMonday.splice(indexes.from, 1);
     this.calMonday.splice(indexes.to, 0, element);
     this.students.updateCal(this.item, this.item._id);
-    // console.log("Monday", indexes.from, indexes.to)
-    // console.log(this.student.calendar[0])
   }
   reorderIconsTuesday(indexes) {
     let element = this.calTuesday[indexes.from];
     this.calTuesday.splice(indexes.from, 1);
     this.calTuesday.splice(indexes.to, 0, element);
     this.students.updateCal(this.item, this.item._id);
-    // console.log("Tuesday", indexes)
   }
   reorderIconsWednesday(indexes) {
     let element = this.calWednesday[indexes.from];
     this.calWednesday.splice(indexes.from, 1);
     this.calWednesday.splice(indexes.to, 0, element);
     this.students.updateCal(this.item, this.item._id);
-    // console.log("Wednesday", indexes)
   }
   reorderIconsThursday(indexes) {
     let element = this.calThursday[indexes.from];
     this.calThursday.splice(indexes.from, 1);
     this.calThursday.splice(indexes.to, 0, element);
     this.students.updateCal(this.item, this.item._id);
-    // console.log("Thursday", indexes)
   }
   reorderIconsFriday(indexes) {
     let element = this.calFriday[indexes.from];
     this.calFriday.splice(indexes.from, 1);
     this.calFriday.splice(indexes.to, 0, element);
     this.students.updateCal(this.item, this.item._id);
-    // console.log("friday", indexes)
   }
 }

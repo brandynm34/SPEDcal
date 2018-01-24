@@ -5,7 +5,7 @@ import { Groups } from '../../providers/providers';
 import { Item } from '../../models/item';
 import { Items } from '../../providers/providers';
 import { TodaysSchedulePage } from '../todays-schedule/todays-schedule';
-
+import { GroupMembersPage } from '../group-members/group-members';
 /**
  * Generated class for the GroupDetailPage page.
  *
@@ -55,6 +55,16 @@ export class GroupDetailPage {
   openSchedule(student: Item) {
     let modal = this.modalCtrl.create('TodaysSchedulePage', {
       item: student
+    });
+    modal.present();
+    modal.onDidDismiss(() => {
+
+    });
+  }
+
+  editGroup() {
+    let modal = this.modalCtrl.create('GroupMembersPage', {
+      currentItems: this.students
     });
     modal.present();
     modal.onDidDismiss(() => {
