@@ -24,6 +24,7 @@ export class GroupDetailPage {
   students: any;
   members = [];
   item: any;
+  allGroups: any;
 
   constructor(
     public navCtrl: NavController,
@@ -34,14 +35,11 @@ export class GroupDetailPage {
     students: Groups,) {
       this.group = navParams.get('group') || students.defaultGroup;
       this.students = navParams.get('currentItems');
-      console.log(this.students);
+      this.allGroups = navParams.get('allGroups');
       this.getMembers(navParams.get('currentItems'));
-      console.log(this.students);
-
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad GroupDetailPage');
   }
 
   getMembers(students){
@@ -64,7 +62,7 @@ export class GroupDetailPage {
 
   editGroup() {
     let modal = this.modalCtrl.create('GroupMembersPage', {
-      currentItems: this.students, group: this.group
+      currentItems: this.students, group: this.group, allGroups: this.allGroups
     });
     modal.present();
     modal.onDidDismiss(() => {

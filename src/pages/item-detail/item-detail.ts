@@ -5,6 +5,7 @@ import { Items } from '../../providers/providers';
 import { Item } from '../../models/item';
 import { TodaysSchedulePage } from '../todays-schedule/todays-schedule';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { User } from '../../providers/providers';
 
 @IonicPage()
 @Component({
@@ -24,6 +25,7 @@ export class ItemDetailPage {
   calWednesday: any;
   calThursday: any;
   calFriday: any;
+  groups: any;
 
   percents = [
     {
@@ -54,7 +56,9 @@ export class ItemDetailPage {
     navParams: NavParams,
     public modalCtrl: ModalController,
     public viewCtrl: ViewController,
+    public _teacher: User,
     public students: Items) {
+      this.getStudentGroups();
       this.student = navParams.get('item');
       this.item = navParams.get('item') || students.defaultItem;
       this.getTaskStatus();
@@ -65,9 +69,27 @@ export class ItemDetailPage {
       this.calWednesday = this.student.calendar[2].tasks;
       this.calThursday = this.student.calendar[3].tasks;
       this.calFriday = this.student.calendar[4].tasks;
-
-
   }
+
+  _getAllGroupIndexes(arr, val) {
+    let indexes = [], i, j;
+    for(i=0; i < arr.length; i++){
+      for(j=0; j < arr[i].members.length; j++)
+        if (arr[i].members[j] === val)
+          indexes.push(i);
+    }
+    return indexes;
+  }
+
+  getStudentGroups() {
+    let all = this._teacher.getTeacher().groups;
+    let locs = this._getAllGroupIndexes(all, this.student._id);
+    for(let a=0; a<all.length; a++){
+      this.groups.push({id: all[a].id, name: all[a].name})
+    }
+    return this.groups;
+  }
+
   openItem(item: Item, day) {
      let modal = this.modalCtrl.create('TasksPage', {
        item: item, day: day

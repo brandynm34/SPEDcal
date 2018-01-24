@@ -43,7 +43,8 @@ export class GrouplistPage {
   openItem(group: Group) {
     this.navCtrl.push('GroupDetailPage', {
       group: group,
-      currentItems: this.currentItems
+      currentItems: this.currentItems,
+      allGroups: this.currentGroups
     });
   }
 

@@ -17,15 +17,17 @@ export class GroupMembersPage {
   group: any;
   tempMembers = [];
   students: any;
+  allGroups: any;
 
   constructor(public navCtrl: NavController, public _class: User, public navParams: NavParams, public viewCtrl: ViewController) {
     this.group =  navParams.get('group');
+    this.allGroups = navParams.get('allGroups');
     this.temp(navParams.get('currentItems'));
     this.students = navParams.get('currentItems');
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad GroupMembersPage');
+
   }
 
   temp(students) {
@@ -38,19 +40,28 @@ export class GroupMembersPage {
         this.tempMembers[j]['in'] = false;
       }
     }
-    console.log(this.tempMembers);
+    return this.tempMembers;
   }
 
-  updateMembers() {
-    for(let i=0; i<this.group.members.length; i++) {
-      let index = this.group.members.map(function(el) {
-        return el.student_id;
-      }).indexOf(this.group.members.student_id);
+  updateGroup(temp) {
+    let updatedMembers = [];
+    for(let a=0; a<temp.length; a++) {
+      if(temp[a].in) {
+        updatedMembers.push(temp[a].student._id);
+      }
     }
+    this.saveGroup(updatedMembers);
+  }
+
+  saveGroup(newGroup) {
+    let loc = this.allGroups.map(function(el) {
+      return el.id;
+    }).indexOf(this.group.id);
+    this.allGroups[loc].members = newGroup;
+    this.viewCtrl.dismiss();
   }
 
   dismiss() {
-    console.log(this.tempMembers);
     this.viewCtrl.dismiss();
   }
 
