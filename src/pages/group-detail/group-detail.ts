@@ -32,8 +32,8 @@ export class GroupDetailPage {
     public navParams: NavParams,
     public modalCtrl: ModalController,
     public viewCtrl: ViewController,
-    students: Groups,) {
-      this.group = navParams.get('group') || students.defaultGroup;
+  ) {
+      this.group = navParams.get('group') || 0;
       this.students = navParams.get('currentItems');
       this.allGroups = navParams.get('allGroups');
       this.getMembers(navParams.get('currentItems'));
@@ -43,11 +43,12 @@ export class GroupDetailPage {
   }
 
   getMembers(students){
-    for(let i=0; i<students.length; i++){
-    if(students[i].group_number == this.group.id){
-    this.members.push(students[i]
-    );}
+    for(let i=0; i<students.length; i++) {
+      if(this.group.members.indexOf(students[i]._id) > -1) {
+        this.members.push(students[i]);
+      }
     }
+    return this.members;
   }
 
   openSchedule(student: Item) {

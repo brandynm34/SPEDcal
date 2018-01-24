@@ -28,6 +28,15 @@ export class Groups {
     });
   }
 
+  updateGroups(group, id) {
+    this.api.post('teacher/update-groups', group, id)
+    .subscribe(data => {
+      return true
+    }, error => { 
+      return error
+    });
+  }
+
   add(group: Group) {
   }
 

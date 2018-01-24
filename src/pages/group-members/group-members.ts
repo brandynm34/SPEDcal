@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { User } from '../../providers/providers';
+import { Groups } from '../../providers/providers';
 /**
  * Generated class for the GroupMembersPage page.
  *
@@ -18,12 +19,14 @@ export class GroupMembersPage {
   tempMembers = [];
   students: any;
   allGroups: any;
+  teacherID: any;
 
-  constructor(public navCtrl: NavController, public _class: User, public navParams: NavParams, public viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController, public _class: User, public navParams: NavParams, private _teacher: Groups, public viewCtrl: ViewController) {
     this.group =  navParams.get('group');
     this.allGroups = navParams.get('allGroups');
     this.temp(navParams.get('currentItems'));
     this.students = navParams.get('currentItems');
+    this.teacherID = _class.getTeacher()._id;
   }
 
   ionViewDidLoad() {
@@ -58,6 +61,7 @@ export class GroupMembersPage {
       return el.id;
     }).indexOf(this.group.id);
     this.allGroups[loc].members = newGroup;
+    this._teacher.updateGroups(this.allGroups, this.teacherID);
     this.viewCtrl.dismiss();
   }
 
