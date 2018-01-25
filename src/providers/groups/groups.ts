@@ -29,11 +29,11 @@ export class Groups {
   }
 
   updateGroups(group, id) {
-    this.api.post('teacher/update-groups', group, id)
+    this.api.post('teacher/update-groups', {group: group}, id)
     .subscribe(data => {
-      return true
+      console.log(data);
     }, error => { 
-      return error
+      console.log(error);
     });
   }
 

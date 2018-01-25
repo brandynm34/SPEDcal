@@ -67,7 +67,7 @@ export class GroupDetailPage {
     });
     modal.present();
     modal.onDidDismiss(() => {
-
+      this.viewCtrl.dismiss();
     });
   }
 

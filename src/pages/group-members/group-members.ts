@@ -13,6 +13,7 @@ import { Groups } from '../../providers/providers';
 @Component({
   selector: 'page-group-members',
   templateUrl: 'group-members.html',
+  providers: [Groups]
 })
 export class GroupMembersPage {
   group: any;
@@ -61,6 +62,9 @@ export class GroupMembersPage {
       return el.id;
     }).indexOf(this.group.id);
     this.allGroups[loc].members = newGroup;
+    let tempTeacher = this._class.getTeacher();
+    tempTeacher.groups = this.allGroups;
+    this._class.setTeacher(tempTeacher);
     this._teacher.updateGroups(this.allGroups, this.teacherID);
     this.viewCtrl.dismiss();
   }

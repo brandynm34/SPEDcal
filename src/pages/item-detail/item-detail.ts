@@ -25,7 +25,7 @@ export class ItemDetailPage {
   calWednesday: any;
   calThursday: any;
   calFriday: any;
-  groups: any;
+  groups = [];
 
   percents = [
     {
@@ -58,7 +58,7 @@ export class ItemDetailPage {
     public viewCtrl: ViewController,
     public _teacher: User,
     public students: Items) {
-      this.getStudentGroups();
+      this.getStudentGroups(navParams.get('item'));
       this.student = navParams.get('item');
       this.item = navParams.get('item') || students.defaultItem;
       this.getTaskStatus();
@@ -81,12 +81,14 @@ export class ItemDetailPage {
     return indexes;
   }
 
-  getStudentGroups() {
+  getStudentGroups(student) {
     let all = this._teacher.getTeacher().groups;
-    let locs = this._getAllGroupIndexes(all, this.student._id);
+    let locs = this._getAllGroupIndexes(all, student._id);
     for(let a=0; a<all.length; a++){
-      this.groups.push({id: all[a].id, name: all[a].name})
+      if(all[a].members.indexOf(student._id)> -1)
+        this.groups.push({id: all[a].id, name: all[a].name})
     }
+    console.log(this.groups);
     return this.groups;
   }
 
