@@ -16,9 +16,11 @@
 <ion-content padding>
   <ion-grid>
     <ion-row>
-      <ion-col col-4 *ngFor="let student of members" (click)="openSchedule(student)">
+      <ion-col col-6 col-md-4 *ngFor="let student of members" (click)="openSchedule(student)">
           <div>
+
             <ion-img class="profile-img-wrapper" [src]="student.profile_pic"></ion-img>
+            <h1>{{student.first_name}} {{student.last_name.charAt(0)}}</h1>
           </div>
       </ion-col>
     </ion-row>
