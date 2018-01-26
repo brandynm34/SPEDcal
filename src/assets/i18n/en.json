@@ -56,7 +56,8 @@
 
   "ITEM_NAME_PLACEHOLDER": "Name",
   "ITEM_ABOUT_PLACEHOLDER": "About",
-
+  "GROUP_NAME_PLACEHOLDER": "Name",
+  "GROUP_CREATE_TITLE": "New Group",
   "DONE_BUTTON": "Done",
   "CANCEL_BUTTON": "Cancel",
   "DELETE_BUTTON": "Delete",

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, ModalController, NavParams } from 'ionic-angular';
 
 import { Group } from '../../models/group';
 import { Groups } from '../../providers/providers';
@@ -21,7 +21,7 @@ export class GrouplistPage {
   classGroups: any;
   teacher: any;
 
-  constructor(public navCtrl: NavController, public _class: User, public groups: Groups, public items: Items, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public _class: User, public groups: Groups, public items: Items, public navParams: NavParams) {
       this.getGroups(_class.getTeacher()._id);
       this.teacher = _class.getTeacher();
       this.getEvents();
@@ -60,5 +60,13 @@ export class GrouplistPage {
     .then(data => {
       this.currentGroups = data;
     });
+  }
+
+  addGroup() {
+    let addModal = this.modalCtrl.create('GroupCreatePage');
+    addModal.onDidDismiss(item => {
+  
+    })
+    addModal.present();
   }
 }
