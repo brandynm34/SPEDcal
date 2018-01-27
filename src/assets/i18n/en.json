@@ -53,7 +53,7 @@
 
   "ITEM_CREATE_TITLE": "New Student",
   "ITEM_CREATE_CHOOSE_IMAGE": "Add Image",
-
+  "GROUP_UPDATE_ERROR": "Unable to update group. Please check your network connection and try again.",
   "ITEM_NAME_PLACEHOLDER": "Name",
   "ITEM_ABOUT_PLACEHOLDER": "About",
   "GROUP_NAME_PLACEHOLDER": "Name",

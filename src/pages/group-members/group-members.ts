@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, ToastController } from 'ionic-angular';
+import { TranslateService } from '@ngx-translate/core';
+
 import { User } from '../../providers/providers';
 import { Groups } from '../../providers/providers';
 /**
@@ -21,13 +23,22 @@ export class GroupMembersPage {
   students: any;
   allGroups: any;
   teacherID: any;
+  updateErrorString: any;
 
-  constructor(public navCtrl: NavController, public _class: User, public navParams: NavParams, private _teacher: Groups, public viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController, 
+    public _class: User, public navParams: NavParams, 
+    private _teacher: Groups, 
+    public viewCtrl: ViewController,
+    public toastCtrl: ToastController,
+    public translateService: TranslateService) {
     this.group =  navParams.get('group');
     this.allGroups = navParams.get('allGroups');
     this.temp(navParams.get('currentItems'));
     this.students = navParams.get('currentItems');
     this.teacherID = _class.getTeacher()._id;
+    this.translateService.get('GROUP_UPDATE_ERROR').subscribe((value) => {
+      this.updateErrorString = value;
+    })
   }
 
   ionViewDidLoad() {
@@ -65,12 +76,27 @@ export class GroupMembersPage {
     let tempTeacher = this._class.getTeacher();
     tempTeacher.groups = this.allGroups;
     this._class.setTeacher(tempTeacher);
-    this._teacher.updateGroups(this.allGroups, this.teacherID);
-    this.viewCtrl.dismiss();
+    this._teacher.updateGroups(this.allGroups, this.teacherID)
+    .then(data => {
+      this.viewCtrl.dismiss();
+    })
+    .catch(err => {
+      this.creationErr()
+      this.viewCtrl.dismiss();
+    });
   }
 
   dismiss() {
     this.viewCtrl.dismiss();
+  }
+
+  creationErr() {
+    let toast = this.toastCtrl.create({
+      message: this.updateErrorString,
+      duration: 3000,
+      position: 'top'
+    });
+    toast.present();
   }
 
 }

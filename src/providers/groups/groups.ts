@@ -29,11 +29,13 @@ export class Groups {
   }
 
   updateGroups(group, id) {
-    this.api.post('teacher/update-groups', {group: group}, id)
-    .subscribe(data => {
-      console.log(data);
-    }, error => { 
-      console.log(error);
+    return new Promise(resolve => {
+      this.api.post('teacher/update-groups', {group: group}, id)
+      .subscribe(data => {
+        return resolve(data);
+      }, error => { 
+        return resolve(error);
+      });
     });
   }
 
