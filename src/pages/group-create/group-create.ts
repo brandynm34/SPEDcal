@@ -27,7 +27,7 @@ export class GroupCreatePage {
       group_name: ['']
     });
 
-    // Watch the form for changes, and
+    // Watch the form for changes
     this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
     });

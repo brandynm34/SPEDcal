@@ -25,8 +25,8 @@ export class ItemCreatePage {
       profile_pic: ['', Validators.required],
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
-      group_number: [''],
-      teacher_id: this._class.getTeacher()._id
+      teacher_id: this._class.getTeacher()._id,
+      calendar: [[]]
     });
 
     // Watch the form for changes, and

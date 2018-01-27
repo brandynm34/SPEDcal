@@ -22,7 +22,6 @@ export class Items {
       return new Promise(resolve => {
         this.api.get('students', params)
           .map(res => {
-            console.log("param",res);
             return res;
           })
           .subscribe(data => {
@@ -36,7 +35,6 @@ export class Items {
       return new Promise(resolve => {
         this.api.get('students')
           .map(res => {
-            console.log(res);
             return res;
           })
           .subscribe(data => {
@@ -59,11 +57,12 @@ export class Items {
   }
 
   add(student: Item) {
+    console.log(student);
     this.api.post('new/student', student)
     .subscribe(data => {
-       console.log(data);
+       return data;
     }, error => {
-      console.log(error); 
+      return error; 
     });
   }
 
