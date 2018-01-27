@@ -39,7 +39,15 @@ export class Groups {
     });
   }
 
-  add(group: Group) {
+  add(group: Group, id) {
+    return new Promise(resolve => {
+      this.api.post('teacher/add-group', {group: group}, id)
+        .subscribe(data => {
+          return resolve(data);
+        }, error => { 
+          return resolve(error);
+      });
+    });
   }
 
   delete(group: Group) {

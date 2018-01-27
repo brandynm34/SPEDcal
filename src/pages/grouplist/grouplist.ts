@@ -72,9 +72,10 @@ export class GrouplistPage {
   }
 
   addGroup() {
-    let addModal = this.modalCtrl.create('GroupCreatePage');
+    let allGrps = this.getGroups(this._class.getTeacher()._id);
+    let addModal = this.modalCtrl.create('GroupCreatePage', {groups: allGrps});
     addModal.onDidDismiss(item => {
-  
+      this.getGroups(this.teacher._id);
     })
     addModal.present();
   }

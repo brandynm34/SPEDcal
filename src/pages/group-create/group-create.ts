@@ -2,12 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-/**
- * Generated class for the GroupCreatePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
+import { Groups } from '../../providers/providers';
+import { User } from '../../providers/providers';
 
 @IonicPage()
 @Component({
@@ -21,10 +18,18 @@ export class GroupCreatePage {
   item: any;
 
   form: FormGroup;
+  teacherID: any;
 
-  constructor(public navCtrl: NavController, formBuilder: FormBuilder, public navParams: NavParams, public viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController, 
+    formBuilder: FormBuilder, 
+    public navParams: NavParams, 
+    public viewCtrl: ViewController,
+    public _teacher: User,
+    public _groups: Groups) {
     this.form = formBuilder.group({
-      group_name: ['']
+      group_name: [''],
+      id: [navParams.get('groups').length +1],
+      members : [[]]
     });
 
     // Watch the form for changes
@@ -34,7 +39,15 @@ export class GroupCreatePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad GroupCreatePage');
+    this.teacherID = this._teacher.getTeacher()._id
+  }
+
+  create() {
+    if (!this.form.valid) { return; }
+    this._groups.add(this.form.value, this.teacherID)
+    .then(data=> {
+      this.viewCtrl.dismiss();
+    });
   }
 
   cancel() {
