@@ -24,10 +24,19 @@ export class GrouplistPage {
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public _class: User, public groups: Groups, public items: Items, public navParams: NavParams) {
       this.getGroups(_class.getTeacher()._id);
       this.teacher = _class.getTeacher();
+      this.getStudents(this._class.getTeacher()._id);
       this.getEvents();
   }
 
   ionViewDidLoad() {
+  }
+
+  getStudents(teacher) {
+    this.items.query(teacher)
+    .then(data => {
+      this.currentItems = data;
+      return this.currentItems;
+    });
   }
 
   /**

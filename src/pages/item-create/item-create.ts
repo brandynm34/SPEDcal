@@ -5,6 +5,7 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
 import { IonicPage, NavController, ViewController } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { User } from '../../providers/providers';
+import { Items } from '../../providers/providers';
 
 @IonicPage()
 @Component({
@@ -20,13 +21,42 @@ export class ItemCreatePage {
 
   form: FormGroup;
 
-  constructor(public navCtrl: NavController, public _class: User, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera) {
+  constructor(public navCtrl: NavController,public items: Items, public _class: User, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera) {
     this.form = formBuilder.group({
       profile_pic: ['', Validators.required],
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       teacher_id: this._class.getTeacher()._id,
-      calendar: [[]]
+      calendar: [[{
+        "day": "Monday",
+        "tasks": [
+        
+                ]
+            },
+            {
+                "day": "Tuesday",
+                "tasks": [
+                
+                ]
+            },
+            {
+                "day": "Wednesday",
+                "tasks": [
+                
+                ]
+            },
+            {
+                "day": "Thursday",
+                "tasks": [
+        
+                ]
+            },
+            {
+                "day": "Friday",
+                "tasks": [
+                    
+                ]
+            }]]
     });
 
     // Watch the form for changes, and
@@ -83,6 +113,9 @@ export class ItemCreatePage {
    */
   done() {
     if (!this.form.valid) { return; }
-    this.viewCtrl.dismiss(this.form.value);
+    this.items.add(this.form.value)
+    .then(data =>{
+      this.viewCtrl.dismiss();
+    });
   }
 }

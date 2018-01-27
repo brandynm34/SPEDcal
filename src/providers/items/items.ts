@@ -57,12 +57,13 @@ export class Items {
   }
 
   add(student: Item) {
-    console.log(student);
-    this.api.post('new/student', student)
-    .subscribe(data => {
-       return data;
-    }, error => {
-      return error; 
+    return new Promise(resolve => {
+      this.api.post('new/student', student)
+      .subscribe(data => {
+        return resolve(data);
+      }, error => {
+        return resolve(error); 
+      });
     });
   }
 
