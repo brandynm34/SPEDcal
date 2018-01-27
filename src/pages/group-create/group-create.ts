@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, ToastController } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -14,7 +14,7 @@ import { User } from '../../providers/providers';
 export class GroupCreatePage {
 
   isReadyToSave: boolean;
-
+  updateErrorString: any;
   item: any;
 
   form: FormGroup;
@@ -24,6 +24,8 @@ export class GroupCreatePage {
     formBuilder: FormBuilder, 
     public navParams: NavParams, 
     public viewCtrl: ViewController,
+    public toastCtrl: ToastController,
+    public translateService: TranslateService,
     public _teacher: User,
     public _groups: Groups) {
     this.form = formBuilder.group({
@@ -36,6 +38,10 @@ export class GroupCreatePage {
     this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
     });
+
+    this.translateService.get('GROUP_UPDATE_ERROR').subscribe((value) => {
+      this.updateErrorString = value;
+    });
   }
 
   ionViewDidLoad() {
@@ -47,11 +53,24 @@ export class GroupCreatePage {
     this._groups.add(this.form.value, this.teacherID)
     .then(data=> {
       this.viewCtrl.dismiss();
+    })
+    .catch(err => {
+      this.creationErr();
+      this.viewCtrl.dismiss();
     });
   }
 
   cancel() {
     this.viewCtrl.dismiss();
+  }
+
+  creationErr() {
+    let toast = this.toastCtrl.create({
+      message: this.updateErrorString,
+      duration: 3000,
+      position: 'top'
+    });
+    toast.present();
   }
 
 }

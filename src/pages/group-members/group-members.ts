@@ -40,7 +40,7 @@ export class GroupMembersPage {
     this.teacherID = _class.getTeacher()._id;
     this.translateService.get('GROUP_UPDATE_ERROR').subscribe((value) => {
       this.updateErrorString = value;
-    })
+    });
   }
 
   ionViewDidLoad() {
