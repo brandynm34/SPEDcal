@@ -24,6 +24,7 @@ export class GroupMembersPage {
   allGroups: any;
   teacherID: any;
   updateErrorString: any;
+  loading: boolean;
 
   constructor(public navCtrl: NavController, 
     public _class: User, public navParams: NavParams, 
@@ -31,6 +32,7 @@ export class GroupMembersPage {
     public viewCtrl: ViewController,
     public toastCtrl: ToastController,
     public translateService: TranslateService) {
+    this.loading = false;
     this.group =  navParams.get('group');
     this.allGroups = navParams.get('allGroups');
     this.temp(navParams.get('currentItems'));
@@ -69,6 +71,7 @@ export class GroupMembersPage {
   }
 
   saveGroup(newGroup) {
+    this.loading = true;
     let loc = this.allGroups.map(function(el) {
       return el.id;
     }).indexOf(this.group.id);
@@ -81,7 +84,7 @@ export class GroupMembersPage {
       this.viewCtrl.dismiss();
     })
     .catch(err => {
-      this.creationErr()
+      this.creationErr();
       this.viewCtrl.dismiss();
     });
   }

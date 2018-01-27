@@ -19,8 +19,8 @@
           <button ion-button id="btn">Edit</button>
           <h2>{{ item.first_name }} {{ item.last_name }}</h2>
           <p> Groups:
-            <span >
-              {{groups}}
+            <span *ngFor="let group of groups">
+              {{group.id}}. {{group.name}}
             </span>
           </p>  
           <p>Notes: </p>

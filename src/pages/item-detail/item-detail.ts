@@ -88,7 +88,6 @@ export class ItemDetailPage {
       if(all[a].members.indexOf(student._id)> -1)
         this.groups.push({id: all[a].id, name: all[a].name})
     }
-    console.log(this.groups);
     return this.groups;
   }
 

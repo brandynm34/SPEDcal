@@ -1,4 +1,6 @@
 <ion-header>
+  <div *ngIf="loading" class="loading-screen">
+  </div>
   <ion-toolbar>
     <ion-title>
       Tasks
@@ -11,8 +13,12 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content padding >
+  <div *ngIf="loading" class="loading-screen">
+    <div *ngIf="loading" class="spinner">
+        <ion-spinner *ngIf="loading"></ion-spinner>
+    </div>
+  </div>
   <ion-item *ngFor="let student of tempMembers">
     <ion-label>{{student.student.first_name}} {{student.student.last_name}}</ion-label>
     <ion-checkbox [(ngModel)]='student.in' [checked]="student.in"> </ion-checkbox>

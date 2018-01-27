@@ -1,3 +1,21 @@
 page-group-members {
 
+    .loading-screen {
+        position: absolute;
+        z-index: 99;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(8, 29, 39);
+        opacity: .35;
+    }
+
+    .spinner {
+        position: relative;
+        margin: 0 auto;
+        top: 50%;
+        left: 22%
+    }
+
 }
