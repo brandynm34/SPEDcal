@@ -24,6 +24,7 @@ export class GrouplistPage {
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public _class: User, public groups: Groups, public items: Items, public navParams: NavParams) {
       this.getGroups(_class.getTeacher()._id);
       this.teacher = _class.getTeacher();
+      this.currentGroups = this.getGroups(_class.getTeacher()._id);
       this.getStudents(this._class.getTeacher()._id);
       this.getEvents();
   }
@@ -72,8 +73,7 @@ export class GrouplistPage {
   }
 
   addGroup() {
-    let allGrps = this.getGroups(this._class.getTeacher()._id);
-    let addModal = this.modalCtrl.create('GroupCreatePage', {groups: allGrps});
+    let addModal = this.modalCtrl.create('GroupCreatePage', {groups: this.currentGroups, groupsAmount: this.currentGroups.length});
     addModal.onDidDismiss(item => {
       this.getGroups(this.teacher._id);
     })

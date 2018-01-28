@@ -10,13 +10,14 @@ import { User } from '../../providers/providers';
 @Component({
   selector: 'page-group-create',
   templateUrl: 'group-create.html',
+  providers: [Groups]
 })
 export class GroupCreatePage {
 
   isReadyToSave: boolean;
   updateErrorString: any;
   item: any;
-
+  currentGroups: any;
   form: FormGroup;
   teacherID: any;
 
@@ -28,9 +29,10 @@ export class GroupCreatePage {
     public translateService: TranslateService,
     public _teacher: User,
     public _groups: Groups) {
+    this.currentGroups = navParams.get('groups');
     this.form = formBuilder.group({
       group_name: [''],
-      id: [navParams.get('groups').length +1],
+      id: [navParams.get('groupsAmount') +1],
       members : [[]]
     });
 
@@ -45,12 +47,13 @@ export class GroupCreatePage {
   }
 
   ionViewDidLoad() {
-    this.teacherID = this._teacher.getTeacher()._id
+    this.teacherID = this._teacher.getTeacher()._id;
   }
 
   create() {
     if (!this.form.valid) { return; }
-    this._groups.add(this.form.value, this.teacherID)
+    this.currentGroups.push(this.form.value);
+    this._groups.add(this.currentGroups, this.teacherID)
     .then(data=> {
       this.viewCtrl.dismiss();
     })

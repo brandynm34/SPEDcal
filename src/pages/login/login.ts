@@ -37,8 +37,9 @@ export class LoginPage {
 
   // Attempt to login in through our User service
   doLogin() {
-    this.user.login(this.account).subscribe((resp) => {
+    this.user.googlePlusLogin(this.account).subscribe((resp) => {
       if(resp) {
+        console.log(resp);
         this.user.setTeacher(resp);
         this.navCtrl.push(MainPage, {teacher: resp});
       } else {
