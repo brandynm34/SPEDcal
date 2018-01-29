@@ -86,7 +86,7 @@ export class ItemDetailPage {
     let locs = this._getAllGroupIndexes(all, student._id);
     for(let a=0; a<all.length; a++){
       if(all[a].members.indexOf(student._id)> -1)
-        this.groups.push({id: all[a].id, name: all[a].name})
+        this.groups.push({id: all[a].id, name: all[a].group_name})
     }
     return this.groups;
   }
