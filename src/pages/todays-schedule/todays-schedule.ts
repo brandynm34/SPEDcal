@@ -41,5 +41,5 @@ export class TodaysSchedulePage {
     this.updateCal(this.student);
     this.viewCtrl.dismiss();
   }
-  
+
 }
