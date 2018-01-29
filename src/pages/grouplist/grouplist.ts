@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, ModalController, NavParams } from 'ionic-angular';
 
 import { Group } from '../../models/group';
 import { Groups } from '../../providers/providers';
@@ -21,13 +21,23 @@ export class GrouplistPage {
   classGroups: any;
   teacher: any;
 
-  constructor(public navCtrl: NavController, public _class: User,public groups: Groups, public items: Items, public navParams: NavParams) {
-      this.currentGroups = _class.getTeacher().groups;
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public _class: User, public groups: Groups, public items: Items, public navParams: NavParams) {
+      this.getGroups(_class.getTeacher()._id);
       this.teacher = _class.getTeacher();
+      this.currentGroups = this.getGroups(_class.getTeacher()._id);
+      this.getStudents(this._class.getTeacher()._id);
       this.getEvents();
   }
 
   ionViewDidLoad() {
+  }
+
+  getStudents(teacher) {
+    this.items.query(teacher)
+    .then(data => {
+      this.currentItems = data;
+      return this.currentItems;
+    });
   }
 
   /**
@@ -43,7 +53,8 @@ export class GrouplistPage {
   openItem(group: Group) {
     this.navCtrl.push('GroupDetailPage', {
       group: group,
-      currentItems: this.currentItems
+      currentItems: this.currentItems,
+      allGroups: this.currentGroups
     });
   }
 
@@ -54,8 +65,18 @@ export class GrouplistPage {
     });
   }
 
-  getGroups() {
-    // todo
-    return this.teacher;
+  getGroups(id) {
+    this.groups.getGroups(id)
+    .then(data => {
+      this.currentGroups = data;
+    });
+  }
+
+  addGroup() {
+    let addModal = this.modalCtrl.create('GroupCreatePage', {groups: this.currentGroups, groupsAmount: this.currentGroups.length});
+    addModal.onDidDismiss(item => {
+      this.getGroups(this.teacher._id);
+    })
+    addModal.present();
   }
 }

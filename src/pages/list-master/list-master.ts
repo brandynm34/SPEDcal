@@ -39,6 +39,7 @@ export class ListMasterPage {
     this.items.query(teacher)
     .then(data => {
       this.currentItems = data;
+      return this.currentItems;
     });
   }
 
@@ -49,10 +50,7 @@ export class ListMasterPage {
   addItem() {
     let addModal = this.modalCtrl.create('ItemCreatePage');
     addModal.onDidDismiss(item => {
-      if (item) {
-        this.items.add(item);
-        this.getStudents(this.teacher._id);
-      }
+      this.getStudents(this.teacher._id);
     })
     addModal.present();
   }

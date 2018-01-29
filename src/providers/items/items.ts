@@ -22,7 +22,6 @@ export class Items {
       return new Promise(resolve => {
         this.api.get('students', params)
           .map(res => {
-            console.log("param",res);
             return res;
           })
           .subscribe(data => {
@@ -36,7 +35,6 @@ export class Items {
       return new Promise(resolve => {
         this.api.get('students')
           .map(res => {
-            console.log(res);
             return res;
           })
           .subscribe(data => {
@@ -59,11 +57,13 @@ export class Items {
   }
 
   add(student: Item) {
-    this.api.post('new/student', student)
-    .subscribe(data => {
-       console.log(data);
-    }, error => {
-      console.log(error); 
+    return new Promise(resolve => {
+      this.api.post('new/student', student)
+      .subscribe(data => {
+        return resolve(data);
+      }, error => {
+        return resolve(error); 
+      });
     });
   }
 
@@ -74,6 +74,23 @@ export class Items {
     }, error => {
       console.log(error); 
     });
+  }
+
+  getStudentsByGroup(group) {
+    return new Promise(resolve => {
+      this.api.get('students/by-group', group)
+      .map(data => {
+        return data;
+      })
+      .subscribe(data => {
+        this.data = data;
+        resolve(this.data);
+      });
+    });
+  }
+
+  getGroupByGroups() {
+    // lodash
   }
 
 }

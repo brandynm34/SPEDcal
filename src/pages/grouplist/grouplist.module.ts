@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
+
 import { GrouplistPage } from './grouplist';
 
 @NgModule({
@@ -8,6 +9,7 @@ import { GrouplistPage } from './grouplist';
   ],
   imports: [
     IonicPageModule.forChild(GrouplistPage),
+
   ],
   exports: [
   

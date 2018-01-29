@@ -2,9 +2,10 @@ import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
-import { IonicPage, NavController, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, ViewController, ToastController } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { User } from '../../providers/providers';
+import { Items } from '../../providers/providers';
 
 @IonicPage()
 @Component({
@@ -15,23 +16,64 @@ export class ItemCreatePage {
   @ViewChild('fileInput') fileInput;
 
   isReadyToSave: boolean;
+  updateErrorString: any;
 
   item: any;
 
   form: FormGroup;
 
-  constructor(public navCtrl: NavController, public _class: User, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera) {
+  constructor(public navCtrl: NavController,
+    public items: Items, 
+    public _class: User, 
+    public viewCtrl: ViewController,
+    public toastCtrl: ToastController,
+    public translateService: TranslateService, 
+    formBuilder: FormBuilder, 
+    public camera: Camera) {
     this.form = formBuilder.group({
       profile_pic: ['', Validators.required],
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
-      group_number: [''],
-      teacher_id: this._class.getTeacher()._id
+      teacher_id: this._class.getTeacher()._id,
+      calendar: [[{
+        "day": "Monday",
+        "tasks": [
+        
+                ]
+            },
+            {
+                "day": "Tuesday",
+                "tasks": [
+                
+                ]
+            },
+            {
+                "day": "Wednesday",
+                "tasks": [
+                
+                ]
+            },
+            {
+                "day": "Thursday",
+                "tasks": [
+        
+                ]
+            },
+            {
+                "day": "Friday",
+                "tasks": [
+                    
+                ]
+            }]]
     });
 
     // Watch the form for changes, and
     this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
+    });
+
+    this.translateService.get('GROUP_UPDATE_ERROR').subscribe((value) => {
+      this.updateErrorString = value;
     });
   }
 
@@ -83,6 +125,23 @@ export class ItemCreatePage {
    */
   done() {
     if (!this.form.valid) { return; }
-    this.viewCtrl.dismiss(this.form.value);
+    this.items.add(this.form.value)
+    .then(data =>{
+      this.viewCtrl.dismiss();
+    })
+    .catch(err => {
+      this.creationErr();
+      this.viewCtrl.dismiss();
+    });
   }
+
+  creationErr() {
+    let toast = this.toastCtrl.create({
+      message: this.updateErrorString,
+      duration: 3000,
+      position: 'top'
+    });
+    toast.present();
+  }
+
 }
