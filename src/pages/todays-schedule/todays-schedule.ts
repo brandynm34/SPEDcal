@@ -40,7 +40,9 @@ export class TodaysSchedulePage {
   }
 
   dismiss() {
-    this.updateCal(this.student);
+    if(this.todayINDEX != 0 && this.todayINDEX != 6){
+      this.updateCal(this.student);
+    }
     this.viewCtrl.dismiss();
   }
 
