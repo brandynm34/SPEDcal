@@ -25,8 +25,8 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-    <ion-item *ngIf="todayINDEX != 0 && todayINDEX != 6" *ngFor="let task of calendar">
+  <ion-list *ngIf="todayINDEX != 0 && todayINDEX != 6">
+    <ion-item *ngFor="let task of calendar">
       <img item-left class="img-task-size" [src]="'assets/img/'+task.name+'.png'"/>
       <ion-label class="label-task-font" text-capitalize>{{task.name}}</ion-label>
       <ion-checkbox item-right [(ngModel)]="task.completed" [checked]="task.completed" ng-click="updateCal()"></ion-checkbox>
