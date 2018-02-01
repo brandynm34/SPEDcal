@@ -22,7 +22,7 @@
             <span *ngFor="let group of groups">
               {{group.id}}. {{group.name}}
             </span>
-          </p>  
+          </p>
           <p>Notes: </p>
         </div>
       </ion-col>
@@ -36,11 +36,11 @@
         Weekly Progress
     </ion-card-header>
     <ion-card-content>
-      <ion-row class="text-center">
-        <div class="button-today-task">
-          <button ion-button icon-only block round (click)="resetWeek()" style="background-color:red;">Reset Week</button>
-        </div>
-      </ion-row>
+        <ion-row class="text-center">
+          <div class="button-today-task">
+            <button ion-button icon-only block round (click)="resetWeek()" style="background-color:red;">Reset Week</button>
+          </div>
+        </ion-row>
       <canvas  #barCanvas ></canvas>
     </ion-card-content>
   </ion-card>
