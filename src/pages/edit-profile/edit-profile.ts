@@ -18,7 +18,7 @@ import { User } from '../../providers/providers';
 })
 export class EditProfilePage {
   isReadyToSave: boolean;
-  updateErrorString= "Unable to update student profile.";
+  updateErrorString = "Unable to update student profile.";
   item: any;
   form: FormGroup;
   student: any;
@@ -51,7 +51,8 @@ export class EditProfilePage {
    * The user cancelled, so we dismiss without sending data back.
    */
   cancel() {
-      this.viewCtrl.dismiss();
+    this.form.value.notes = [this.form.value.notes];
+    this.viewCtrl.dismiss();
   }
 
   /**
@@ -59,6 +60,7 @@ export class EditProfilePage {
    * first.
    */
   done() {
+    this.form.value.notes = [this.form.value.notes];
     if (!this.form.valid) { this.creationErr(); return;} 
       this._student.updateProfile(this.form.value, this.student._id)
       .then(data =>{

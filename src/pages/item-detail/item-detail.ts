@@ -27,6 +27,7 @@ export class ItemDetailPage {
   calThursday: any;
   calFriday: any;
   groups = [];
+  notes = '';
 
   percents = [
     {
@@ -61,6 +62,7 @@ export class ItemDetailPage {
     public students: Items) {
       this.getStudentGroups(navParams.get('item'));
       this.student = navParams.get('item');
+      this.notes = navParams.get('item').notes[0];
       this.item = navParams.get('item') || students.defaultItem;
       this.getTaskStatus();
       this.setPercents();
