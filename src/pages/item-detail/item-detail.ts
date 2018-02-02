@@ -4,6 +4,7 @@ import { Chart } from 'chart.js';
 import { Items } from '../../providers/providers';
 import { Item } from '../../models/item';
 import { TodaysSchedulePage } from '../todays-schedule/todays-schedule';
+import { EditProfilePage } from '../edit-profile/edit-profile';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../providers/providers';
 
@@ -97,6 +98,13 @@ export class ItemDetailPage {
      });
      modal.present();
    }
+
+  openEdit(item: Item, day) {
+    let modal = this.modalCtrl.create('EditProfilePage', {
+      student: item
+    });
+    modal.present();
+  }
 
   openSchedule(item: Item) {
     let modal = this.modalCtrl.create('TodaysSchedulePage', {

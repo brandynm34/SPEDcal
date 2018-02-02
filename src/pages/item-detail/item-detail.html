@@ -16,7 +16,7 @@
       </ion-col>
       <ion-col  col-12 col-md-8>
         <div class="item-detail" padding>
-          <button ion-button id="btn">Edit</button>
+          <button ion-button id="btn" (click)="openEdit(item)">Edit</button>
           <h2>{{ item.first_name }} {{ item.last_name }}</h2>
           <p> Groups:
             <span *ngFor="let group of groups">
