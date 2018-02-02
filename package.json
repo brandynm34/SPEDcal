@@ -1,5 +1,5 @@
 {
-  "name": "SPEDcal",
+  "name": "done_",
   "version": "0.0.1",
   "author": "Ionic Framework",
   "homepage": "http://ionicframework.com/",
@@ -65,7 +65,8 @@
       "cordova-plugin-whitelist": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
-      "cordova-plugin-googleplus": {}
+      "cordova-plugin-googleplus": {},
+      "cordova-plugin-statusbar": {}
     },
     "platforms": [
       "ios"
