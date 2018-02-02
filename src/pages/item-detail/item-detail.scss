@@ -17,12 +17,16 @@ page-item-detail {
     float: right;
   }
 
-
   ion-card-header {
     font-weight: bold;
   }
   .col{
     background: white;
+  }
+
+  .button[icon-only] {
+      padding: 0;
+      min-width: 10.9em;
   }
 
 // ---------Calendar styles-------------
@@ -47,7 +51,7 @@ page-item-detail {
 .button-today-task {
   text-align: center;
   width: 15%;
-  margin-left: 42%;
+  margin-left: 42.5%;
 }
 
 .monday button {
@@ -69,6 +73,8 @@ page-item-detail {
   background-color: #FF7BAC;
 }
 
+// ---------Media Queries-------------
+
 @media only screen and (max-width: 800px) {
   .monday, .tuesday, .wednesday, .thursday, .friday {
     width: 30%;
@@ -83,5 +89,21 @@ page-item-detail {
   }
 
 }
+
+
+@media only screen and (max-width: 800px ) {
+  .button-today-task {
+    text-align: center;
+    margin-left: 45%;
+  }
+}
+
+@media only screen and (max-width: 767px ) {
+  .button-today-task {
+    text-align: center;
+    margin-left: 54%;
+  }
+}
+
 
 }
