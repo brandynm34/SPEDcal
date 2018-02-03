@@ -49,18 +49,19 @@
   "SIGNUP_ERROR": "Unable to create account. Please check your account information and try again.",
   "SIGNUP_BUTTON": "Sign up",
 
-  "LIST_MASTER_TITLE": "Items",
+  "LIST_MASTER_TITLE": "Students",
 
   "ITEM_CREATE_TITLE": "New Student",
   "ITEM_CREATE_CHOOSE_IMAGE": "Add Image",
   "GROUP_UPDATE_ERROR": "Unable to update group. Please check your network connection and try again.",
-  "ITEM_NAME_PLACEHOLDER": "Name",
-  "ITEM_ABOUT_PLACEHOLDER": "About",
+  "ITEM_NAME_PLACEHOLDER": "First Name",
+  "ITEM_ABOUT_PLACEHOLDER": "Last Name",
   "GROUP_NAME_PLACEHOLDER": "Name",
   "GROUP_CREATE_TITLE": "New Group",
   "DONE_BUTTON": "Done",
   "CANCEL_BUTTON": "Cancel",
   "DELETE_BUTTON": "Delete",
+  "PROFILE_EDIT_TITLE": "Edit Profile",
 
   "CARDS_TITLE": "Social",
 

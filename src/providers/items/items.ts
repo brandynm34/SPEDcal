@@ -56,6 +56,17 @@ export class Items {
    });
   }
 
+  updateProfile(student: Item, id) {
+    return new Promise(resolve => {
+      this.api.post('student/info', student, id)
+      .subscribe(data => {
+        return resolve(data);
+      }, error => {
+        return resolve(error); 
+      });
+    });
+  }
+
   add(student: Item) {
     return new Promise(resolve => {
       this.api.post('new/student', student)

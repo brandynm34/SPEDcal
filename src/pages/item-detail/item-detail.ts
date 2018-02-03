@@ -4,6 +4,7 @@ import { Chart } from 'chart.js';
 import { Items } from '../../providers/providers';
 import { Item } from '../../models/item';
 import { TodaysSchedulePage } from '../todays-schedule/todays-schedule';
+import { EditProfilePage } from '../edit-profile/edit-profile';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../providers/providers';
 
@@ -26,6 +27,7 @@ export class ItemDetailPage {
   calThursday: any;
   calFriday: any;
   groups = [];
+  notes = '';
 
   percents = [
     {
@@ -60,6 +62,7 @@ export class ItemDetailPage {
     public students: Items) {
       this.getStudentGroups(navParams.get('item'));
       this.student = navParams.get('item');
+      this.notes = navParams.get('item').notes[0];
       this.item = navParams.get('item') || students.defaultItem;
       this.getTaskStatus();
       this.setPercents();
@@ -97,6 +100,22 @@ export class ItemDetailPage {
      });
      modal.present();
    }
+
+  openEdit(item: Item, day) {
+    let modal = this.modalCtrl.create('EditProfilePage', {
+      student: item
+    });
+    modal.present();
+    modal.onDidDismiss(data => {
+      if(data) this.updateProfileVals(data.data.first_name, data.data.last_name, data.data.notes);
+    });
+  }
+
+  updateProfileVals(first, last, notes) {
+    this.item.first_name = first;
+    this.item.last_name = last;
+    this.notes = notes[0];
+  }
 
   openSchedule(item: Item) {
     let modal = this.modalCtrl.create('TodaysSchedulePage', {
