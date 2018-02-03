@@ -32,8 +32,8 @@
     width: 60%;
     height:0;
     padding: 30% 0;
-      border-radius: 50%;      
-      background-color: #FBD43B; 
+      border-radius: 50%;
+      background-color: #FBD43B;
       box-shadow: 3 3 5px #000;
       font-size: 30px;
   }
@@ -44,7 +44,7 @@
   @media only screen and (max-width: 576px) {
     .round-button-circle {
       font-size: 20px;
-      width: 80%;
-      padding: 40% 0;
-    }      
+      width: 60%;
+      padding: 25% 0;
+    }
   }

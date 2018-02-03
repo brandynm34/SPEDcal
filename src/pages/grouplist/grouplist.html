@@ -2,8 +2,12 @@
 
   <ion-navbar color="secondary">
     <ion-title>Group List</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addGroup()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 
@@ -12,7 +16,7 @@
   <ion-list>
     <ion-item-sliding *ngFor="let group of currentGroups">
       <button ion-item (click)="openItem(group)">
-        <h1>{{group.name}} {{group.id}}</h1>
+        <h1>{{group.id}}. {{group.group_name}} </h1>
 
       </button>
       <!-- <ion-item-options>

@@ -16,10 +16,18 @@
       </ion-col>
       <ion-col  col-12 col-md-8>
         <div class="item-detail" padding>
-          <button ion-button id="btn">Edit</button>
+          <button ion-button id="btn" (click)="openEdit(item)">Edit</button>
           <h2>{{ item.first_name }} {{ item.last_name }}</h2>
-          <p>Group Number: {{item.group_number}} </p>
-          <p>Notes: </p>
+          <p> Groups:
+            <span *ngFor="let group of groups">
+              {{group.id}}. {{group.name}}
+            </span>
+          </p>
+          <p>Notes: 
+            <span>
+              {{notes}}
+            </span>
+          </p>
         </div>
       </ion-col>
 
@@ -32,11 +40,11 @@
         Weekly Progress
     </ion-card-header>
     <ion-card-content>
-      <ion-row class="text-center">
-        <div class="button-today-task">
-          <button ion-button icon-only block round (click)="resetWeek()" style="background-color:red;">Reset Week</button>
-        </div>
-      </ion-row>
+        <ion-row class="text-center">
+          <div class="button-today-task">
+            <button ion-button icon-only block round (click)="resetWeek()" style="background-color:red;">Reset Week</button>
+          </div>
+        </ion-row>
       <canvas  #barCanvas ></canvas>
     </ion-card-content>
   </ion-card>

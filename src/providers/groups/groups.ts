@@ -15,11 +15,39 @@ export class Groups {
 
   constructor(public api: Api) { }
 
-  query(params?: any) {
-    return this.api.get('/users', params);
+  getGroups(params?: any) {
+    return new Promise(resolve => {
+      this.api.get('teacher/get-groups', params)
+        .map(res => {
+          return res;
+        })
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
   }
 
-  add(group: Group) {
+  updateGroups(group, id) {
+    return new Promise(resolve => {
+      this.api.post('teacher/update-groups', {group: group}, id)
+      .subscribe(data => {
+        return resolve(data);
+      }, error => { 
+        return resolve(error);
+      });
+    });
+  }
+
+  add(group: Group, id) {
+    return new Promise(resolve => {
+      this.api.post('teacher/add-group', {group: group}, id)
+        .subscribe(data => {
+          return resolve(data);
+        }, error => { 
+          return resolve(error);
+      });
+    });
   }
 
   delete(group: Group) {

@@ -18,11 +18,13 @@ export class TodaysSchedulePage {
   student: any;
   calendar: any;
   today: any;
+  todayINDEX: any;
   day: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public students: Items) {
     this.student = navParams.get('item');
     this.today = new Date();
+    this.todayINDEX = this.today.getDay();
     if(this.today.getDay()>-1 && this.today.getDay()<=5) {
       this.calendar = this.student.calendar[this.today.getDay()-1].tasks;
       this.today = this.student.calendar[this.today.getDay()-1].day;
@@ -38,8 +40,10 @@ export class TodaysSchedulePage {
   }
 
   dismiss() {
-    this.updateCal(this.student);
+    if(this.todayINDEX != 0 && this.todayINDEX != 6){
+      this.updateCal(this.student);
+    }
     this.viewCtrl.dismiss();
   }
-  
+
 }

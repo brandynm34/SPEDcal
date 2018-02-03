@@ -1,18 +1,49 @@
 page-group-detail {
   .profile-img-wrapper {
-    // background: url('assets/img/boy1.jpg');
-    width: 250px;
     height: 250px;
+    width: 250px;
     border-radius: 50%;
     margin-left: 15%;
-    margin-top: 5%;
     // object-fit: cover;
+
     img {
       border-radius: 50%;
       width: 250px;
       height: 250px;
     }
 
+  }
+  h1{
+    text-align: center;
+    margin-right: 15%;
+    margin-bottom: 5%
+
+  }
+  @media only screen and (max-width: 786px) {
+    .profile-img-wrapper {
+      height: 200px;
+      width: 200px;
+      margin-left: 10%;
+      img {
+        width: 200px;
+        height: 200px;
+      }
+    }
+    h1{
+      margin-right: 0;
+    }
+  }
+  @media only screen and (max-width: 420px) {
+    .profile-img-wrapper {
+      height: 175px;
+      width: 175px;
+      margin-left: 0;
+      img {
+        width: 175px;
+        height: 175px;
+      }
+
+    }
   }
 
 }
