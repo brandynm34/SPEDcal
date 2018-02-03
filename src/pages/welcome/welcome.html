@@ -4,8 +4,15 @@
       <div class="splash-info">
         <div class="splash-logo"></div>
       </div>
-      <div padding>
-        <button  ion-button block round (click)="login()" class="login">{{ 'LOGIN' | translate }}</button>          
+      <div padding class="flex">
+        <button ion-button class="login" (click)="login()">
+          <ion-col col-2>
+              <div class="g-icon"></div>
+          </ion-col>
+          <ion-col col-10>
+              <div>Sign in with Google</div>
+          </ion-col>
+        </button>
       </div>
     </div>
   </div>
