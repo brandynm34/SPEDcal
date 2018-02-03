@@ -64,7 +64,8 @@ export class EditProfilePage {
     if (!this.form.valid) { this.creationErr(); return;} 
       this._student.updateProfile(this.form.value, this.student._id)
       .then(data =>{
-        this.viewCtrl.dismiss();
+        data = this.form.value;
+        this.viewCtrl.dismiss({data});
       })
       .catch(err => {
         this.creationErr();

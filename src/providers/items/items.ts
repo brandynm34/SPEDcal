@@ -58,7 +58,7 @@ export class Items {
 
   updateProfile(student: Item, id) {
     return new Promise(resolve => {
-      this.api.post('student/info', student)
+      this.api.post('student/info', student, id)
       .subscribe(data => {
         return resolve(data);
       }, error => {

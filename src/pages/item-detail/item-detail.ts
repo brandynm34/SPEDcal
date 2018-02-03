@@ -106,6 +106,15 @@ export class ItemDetailPage {
       student: item
     });
     modal.present();
+    modal.onDidDismiss(data => {
+      if(data) this.updateProfileVals(data.data.first_name, data.data.last_name, data.data.notes);
+    });
+  }
+
+  updateProfileVals(first, last, notes) {
+    this.item.first_name = first;
+    this.item.last_name = last;
+    this.notes = notes[0];
   }
 
   openSchedule(item: Item) {
