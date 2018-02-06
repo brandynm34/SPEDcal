@@ -33,7 +33,7 @@ page-group-detail {
       margin-right: 0;
     }
   }
-  @media only screen and (max-width: 420px) {
+  @media only screen and (max-width: 440px) {
     .profile-img-wrapper {
       height: 175px;
       width: 175px;
@@ -41,6 +41,19 @@ page-group-detail {
       img {
         width: 175px;
         height: 175px;
+      }
+
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    .profile-img-wrapper {
+      height: 150px;
+      width: 150px;
+      margin-left: 0;
+      img {
+        width: 150px;
+        height: 150px;
       }
 
     }
