@@ -125,8 +125,6 @@ export class ItemCreatePage {
    */
   done() {
     if (!this.form.valid) { return; }
-    //if img not selected chooses placeholder
-    this.form.patchValue({ 'profile_pic': '../../assets/img/profile-place-holder.png'});
     this.items.add(this.form.value)
     .then(data =>{
       this.viewCtrl.dismiss();

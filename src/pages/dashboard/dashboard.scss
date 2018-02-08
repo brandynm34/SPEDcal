@@ -48,3 +48,11 @@
       padding: 25% 0;
     }
   }
+
+  @media only screen and (max-width: 767px) {
+    .round-button-circle {
+        font-size: 22px;
+        width: 40%;
+        padding: 19% 0;
+    }
+  }
