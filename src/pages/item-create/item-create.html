@@ -30,7 +30,7 @@
       <div class="profile-image-placeholder" *ngIf="!this.form.controls.profile_pic.value">
         <ion-icon name="add"></ion-icon>
         <div>
-          {{ 'ITEM_CREATE_CHOOSE_IMAGE' | translate }}
+                {{ 'ITEM_CREATE_CHOOSE_IMAGE' | translate }}
         </div>
       </div>
       <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profile_pic.value"></div>
