@@ -124,9 +124,12 @@ export class ItemCreatePage {
    * back to the presenter.
    */
   done() {
+
     if (!this.form.valid) { return; }
     //if img not selected chooses placeholder
-    this.form.patchValue({ 'profile_pic': '../../assets/img/profile-place-holder.png'});
+    if (this.form.get('profile_pic').value === '') {
+      this.form.patchValue({ 'profile_pic': '../../assets/img/profile-place-holder.png'});}
+
     this.items.add(this.form.value)
     .then(data =>{
       this.viewCtrl.dismiss();
@@ -135,6 +138,7 @@ export class ItemCreatePage {
       this.creationErr();
       this.viewCtrl.dismiss();
     });
+    console.log('here', this.form.get('profile_pic').value )
   }
 
   creationErr() {
