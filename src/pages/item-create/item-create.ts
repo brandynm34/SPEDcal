@@ -23,46 +23,46 @@ export class ItemCreatePage {
   form: FormGroup;
 
   constructor(public navCtrl: NavController,
-    public items: Items, 
-    public _class: User, 
+    public items: Items,
+    public _class: User,
     public viewCtrl: ViewController,
     public toastCtrl: ToastController,
-    public translateService: TranslateService, 
-    formBuilder: FormBuilder, 
+    public translateService: TranslateService,
+    formBuilder: FormBuilder,
     public camera: Camera) {
     this.form = formBuilder.group({
-      profile_pic: ['', Validators.required],
+      profile_pic: [''],
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       teacher_id: this._class.getTeacher()._id,
       calendar: [[{
         "day": "Monday",
         "tasks": [
-        
+
                 ]
             },
             {
                 "day": "Tuesday",
                 "tasks": [
-                
+
                 ]
             },
             {
                 "day": "Wednesday",
                 "tasks": [
-                
+
                 ]
             },
             {
                 "day": "Thursday",
                 "tasks": [
-        
+
                 ]
             },
             {
                 "day": "Friday",
                 "tasks": [
-                    
+
                 ]
             }]]
     });
@@ -124,7 +124,12 @@ export class ItemCreatePage {
    * back to the presenter.
    */
   done() {
+
     if (!this.form.valid) { return; }
+    //if img not selected chooses placeholder
+    if (this.form.get('profile_pic').value === '') {
+      this.form.patchValue({ 'profile_pic': '../../assets/img/profile-place-holder.png'});}
+
     this.items.add(this.form.value)
     .then(data =>{
       this.viewCtrl.dismiss();
