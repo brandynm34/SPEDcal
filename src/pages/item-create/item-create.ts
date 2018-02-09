@@ -138,7 +138,6 @@ export class ItemCreatePage {
       this.creationErr();
       this.viewCtrl.dismiss();
     });
-    console.log('here', this.form.get('profile_pic').value )
   }
 
   creationErr() {
