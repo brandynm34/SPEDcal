@@ -1,6 +1,6 @@
 # Eduler ✅
 
-_Note: the Ionic Super Starter requires Ionic CLI 3._
+_Developers: Amanda Horacio, Anna Ingels, Carey Kepford, Brandy Moreno_
 
 <img src="src/assets/imgs/Eduler.png" width="400" />
 
@@ -10,7 +10,8 @@ Eduler is a scheduling tool built for teachers to use and designed for students 
 
 1. Student Profiles: Create and Edit
 2. Student Schedules: Customize Schedules Mon - Fri 
-3. Groups: Create, Append Students, and Edit
+3. Graph: Tracking Weekly Progress
+4. Groups: Create, Append Students, and Edit
 
 ### Api
 
