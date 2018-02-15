@@ -26,10 +26,8 @@ page-todays-schedule {
 }
 
 .img-task-size {
-  height: 80px;
-  width: 80px;
-  background-color: #FBD43B;
-  border-radius: 10%;
+  height: 150px;
+  width: 150px;
 }
 
 .label-task-font {
@@ -38,6 +36,39 @@ page-todays-schedule {
   font-size: 2em;
   font-family: 'Archivo Black', sans-serif;
   margin-left: 15%;
+}
+
+
+
+@media screen and (max-width: 667px){
+  .img-task-size {
+    height: 100px;
+    width: 100px;
+  }
+
+}
+
+
+@media screen and (max-width: 495px){
+  .label-task-font {
+    font-size: 20px;
+  
+  }
+
+  .img-task-size {
+    height: 70px;
+    width: 70px;
+  }
+
+}
+
+@media screen and (max-width: 430px){
+  .label-task-font {
+    font-size: 15px;
+  
+  }
+
+
 }
 
 }

@@ -40,8 +40,8 @@
         Weekly Progress
     </ion-card-header>
     <ion-card-content>
-        <ion-row class="text-center">
-          <div class="button-today-task">
+        <ion-row class="text-center button-today-task">
+          <div>
             <button ion-button icon-only block round (click)="resetWeek()" style="background-color:red;">Reset Week</button>
           </div>
         </ion-row>
@@ -51,8 +51,8 @@
 
   <!-- CALENDAR STARTS -->
   <h1 class="caltitle"> {{item.first_name}}'s Schedule </h1>
-  <ion-row class="text-center">
-    <div class="button-today-task">
+  <ion-row class="text-center button-today-task">
+    <div>
       <button ion-button icon-only block round (click)="openSchedule()">Today's Schedule</button>
     </div>
   </ion-row>
