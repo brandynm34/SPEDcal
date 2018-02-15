@@ -49,9 +49,9 @@ page-item-detail {
 }
 
 .button-today-task {
+  display: flex;
   text-align: center;
-  width: 15%;
-  margin-left: 42.5%;
+  justify-content: center;
 }
 
 .monday button {
@@ -75,10 +75,18 @@ page-item-detail {
 
 // ---------Media Queries-------------
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 995px) {
   .monday, .tuesday, .wednesday, .thursday, .friday {
     width: 30%;
     margin: 10px 10px 10px 10px;
+  }
+
+}
+
+@media only screen and (max-width: 695px) {
+  .monday, .tuesday, .wednesday, .thursday, .friday {
+    width: 50%;
+    margin: 0;
   }
 
 }
@@ -88,21 +96,6 @@ page-item-detail {
     width: 100%;
   }
 
-}
-
-
-@media only screen and (max-width: 800px ) {
-  .button-today-task {
-    text-align: center;
-    margin-left: 45%;
-  }
-}
-
-@media only screen and (max-width: 767px ) {
-  .button-today-task {
-    text-align: center;
-    margin-left: 54%;
-  }
 }
 
 
