@@ -9,12 +9,15 @@ Eduler is a scheduling tool built for teachers to use and designed for students 
 ## Features
 
 1. Student Profiles: Create and Edit
-2. Student Schedules: Customize Schedules Mon - Fri 
+2. Student Schedules: Customize Schedules Mon - Fri
 3. Graph: Tracking Weekly Progress
 4. Groups: Create, Append Students, and Edit
 
 ### Api
 
-The `Api` is built with node.js, Hapi, and mongo. 
+The `Api` is built with node.js, Hapi, and mongo.
 
+### Download
 
+To download app go to https://itunes.apple.com/us/app/eduler/id1346465892?mt=8
+Only available for iOS devices.
