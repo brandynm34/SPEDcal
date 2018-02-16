@@ -19,5 +19,5 @@ The `Api` is built with node.js, Hapi, and mongo.
 
 ### Download
 
-To download app <a href="https://itunes.apple.com/us/app/eduler/id1346465892?mt=8">click here</a>
+To download app <a href="https://itunes.apple.com/us/app/eduler/id1346465892?mt=8">click here.</a>
 Only available for iOS devices.
