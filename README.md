@@ -15,6 +15,9 @@ Eduler is a scheduling tool built for teachers to use and designed for students 
 
 ### Api
 
-The `Api` is built with node.js, Hapi, and mongo. 
+The `Api` is built with node.js, Hapi, and mongo.
 
+### Download
 
+To download app go to https://itunes.apple.com/us/app/eduler/id1346465892?mt=8
+Only available for iOS devices.
